@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS proj2_db;
+CREATE DATABASE milestone_db;
