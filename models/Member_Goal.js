@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Comment extends Model { }
+class Member_Goal extends Model {}
 
-Comment.init(
+Member_Goal.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -13,22 +13,18 @@ Comment.init(
         },
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
                 model: 'user',
                 key: 'id'
-            }
+            },
+            allowNull: false
         },
         goal_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references:{
                 model: 'goal',
                 key: 'id'
-            }
-        },
-        comment: {
-            type: DataTypes.TEXT,
+            },
             allowNull: false
         }
     },
@@ -36,8 +32,8 @@ Comment.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'comment'
+        modelName: 'member_goal'
     }
 );
-
-module.exports = Comment;
+    
+module.exports = Member_Goal;
