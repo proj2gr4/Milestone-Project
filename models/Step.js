@@ -36,4 +36,4 @@ Step.init({
     }
 })
     
-    
+module.exports = Step;

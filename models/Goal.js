@@ -38,3 +38,5 @@ Goal.init({
         allowNull: false
     }
 })
+
+module.exports = Goal;

@@ -15,3 +15,5 @@ Categories.init({
         allowNull: false
     }
 })
+
+module.exports = Categories;
