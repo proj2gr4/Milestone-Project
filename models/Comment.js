@@ -26,3 +26,5 @@ Comment.init({
         allowNull: false
     }
 })
+
+module.exports = Comment;

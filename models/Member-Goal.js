@@ -24,4 +24,4 @@ Member_Goal.init({
     }
 })
     
-    
+module.exports = Member_Goal;
