@@ -1,44 +1,49 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const Step = require('./Step');
 
-class Member_Goal extends Model {}
+class User_Step extends Model {}
 
-Member_Goal.init(
+User_Step.init(
     {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
+        },        
+        step_id: {
+            type: DataTypes.INTEGER,
+            allowNull:false,
+            references:{
+                model: 'Step',
+                key: 'id'
+            }
         },
         user_id: {
             type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
-            },
-            allowNull: false
-        },
-        goal_id: {
-            type: DataTypes.INTEGER,
+            allowNull: false,
             references:{
-                model: 'goal',
+                model:'User',
                 key: 'id'
-            },
-            allowNull: false
+            }
         },
-        status:{
+        status: {
             type: DataTypes.STRING,
-            allowNull:false,
+            allowNull: false,
             defaultValue: 'Started'
-        }
+        },
+        img_url: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'member_goal'
+        modelName: 'user_step'
     }
 );
-    
-module.exports = Member_Goal;
+
+module.exports = User_Step;
