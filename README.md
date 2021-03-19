@@ -19,7 +19,7 @@ How to install :
 - "mysql2": "^2.2.5",
 - "sequelize": "^6.5.0"
 - npm start
-
+-
 # Milestone Information
 The application functionality:
 - Homepage, Dashboard, Login/Logout Navigation.
