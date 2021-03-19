@@ -53,4 +53,12 @@ Comment.belongsTo(Goal, {
     foreignKey: 'goal_id'
 })
 
+//Goal-Member_goal association:
+Goal.hasMany(Member_Goal, {
+    foreignKey: 'goal_id'
+})
+Member_Goal.belongsTo(Goal, {
+    foreignKey: 'goal_id'
+})
+
 module.exports = { User, Categories, Comment, Goal, Step, Member_Goal };

@@ -49,7 +49,16 @@ router.get('/:id', (req, res) => {
         attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
-        }
+        },
+        include: [
+            {
+                model: Goal,
+                attributes: ['id', 'title', 'created_at']
+            },
+            {
+                model: Member_Goal
+            }
+        ]
     }).then(dbUserData => {
         if(!dbUserData){
             res.status(404).json({ message: 'No user found'});
@@ -64,11 +73,12 @@ router.get('/:id', (req, res) => {
 
 //Post /api/users
 router.post('/', upload.single('profile_img'), (req, res) => {
+    let filePath = req.file ? req.file.path : null
     User.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-      profile_img: req.file.path
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+        profile_img: filePath
     })
     .then(dbUserData => {
     //   req.session.save(() => {
@@ -78,11 +88,10 @@ router.post('/', upload.single('profile_img'), (req, res) => {
     // })
         
         res.json(dbUserData);
-      })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+    })
+    .catch(err => {res.status(500).json(err)});
+
+
 });
 
 router.post('/login', (req, res) =>{
