@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const {Categories, Comment, Goal, Member_Goal, Step, User} = require('../../models');
+const { v4: uuidv4 } = require('uuid');
 
 // multer object to upload file:
 const multer = require('multer');
@@ -10,6 +11,8 @@ const storage = multer.diskStorage({
         cb(null, './uploads/');
     },
     filename: function(req, file, cb){
+        let fileExt = file.originalname.split('.').pop();
+        file.originalname = uuidv4()+'.'+fileExt;
         cb(null, file.originalname);
     }
 });

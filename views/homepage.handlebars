@@ -45,7 +45,7 @@
                         created a new goal: 
                         {{#each this.goals as |goal|}} 
                             <a href="/goal/{{goal.id}}">{{goal.title}}</a> 
-                            on {{format_date goal.createdAt}} in <a href="/categories/{{category_id}}">{{goal.subcategory}}</a>
+                            on {{format_dateTwo goal.createdAt}} in <a href="/categories/{{category_id}}">{{goal.subcategory}}</a>
                         {{/each}}</p>
                     </div>
                 {{/each}}
