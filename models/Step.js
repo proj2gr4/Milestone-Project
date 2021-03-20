@@ -10,6 +10,10 @@ Step.init(
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
+        },        
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
         goal_id: {
             type: DataTypes.INTEGER,
@@ -19,21 +23,13 @@ Step.init(
                 key: 'id'
             }
         },
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         description: {
             type: DataTypes.TEXT,
             allowNull: true
         },
-        status: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        image_url: {
-            type: DataTypes.STRING,
-            allowNull: true
+        start_date: {
+            type: DataTypes.DATE,
+            allowNull: false
         },
         due_date: {
             type: DataTypes.DATE,

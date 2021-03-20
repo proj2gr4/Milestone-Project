@@ -1,2 +1,93 @@
-<ul class="list-group">
-</ul>
+<!-- ***** Main Banner Area Start ***** -->
+  <section class="section main-banner" id="section1" data-section="section1">
+      <video autoplay muted loop id="bg-video">
+          <source src="images/display_video.mp4" type="video/mp4" />
+      </video>
+
+      <div class="video-overlay header-text">
+          <div class="caption">
+              <h6>A Step-by-Step Guide to Your Life Journey</h6>
+              <h2><em>Ready to</em> Start</h2>
+              <div class="main-button">
+                  <div class="scroll-to-section"><a href="#section2">Discover more</a></div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- ***** Main Banner Area End ***** -->
+
+
+  <section class="features">
+    <div class="container">
+      <div class="row">
+        {{#each categories}}
+            <div class="col-lg-4 col-12">
+                <div class="features-post">
+                    <div class="features-content">
+                    <div class="content-show">
+                        <a href="/categories/{{this.id}}"><h4>{{this.category_name}}</h4></a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                {{#each users}}
+                    <div class="col-12">
+                        <p><img class="img-thumbnail rounded" style ="width:50px" src="{{this.profile_img}}"></img> 
+                        <a href="/profile/{{this.id}}">{{this.username}}</a> 
+                        created a new goal: 
+                        {{#each this.goals as |goal|}} 
+                            <a href="/goal/{{goal.id}}">{{goal.title}}</a> 
+                            on {{format_dateTwo goal.createdAt}} in <a href="/categories/{{category_id}}">{{goal.subcategory}}</a>
+                        {{/each}}</p>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+
+
+  <section class="section contact" data-section="section6" id="contactus">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Let’s Keep In Touch</h2>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <form id="contact" action="" method="post">
+            <div class="row">
+              <div class="col-md-6">
+                  <fieldset>
+                    <input name="name" type="text" class="form-control" id="name" placeholder="Your Name" required="">
+                  </fieldset>
+                </div>
+                <div class="col-md-6">
+                  <fieldset>
+                    <input name="email" type="text" class="form-control" id="email" placeholder="Your Email" required="">
+                  </fieldset>
+                </div>
+              <div class="col-md-12">
+                <fieldset>
+                  <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
+                </fieldset>
+              </div>
+              <div class="col-md-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="button">Send Message Now</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
