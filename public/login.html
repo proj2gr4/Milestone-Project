@@ -17,6 +17,11 @@
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="assets/stylesheets/login.css">
 
+    <!-- Additional vendor javascript Files... placing here for now. might move to main.handlebars later. used for modal -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
   </head>
 
   <body>
@@ -56,21 +61,20 @@
         <div class="col-md-6">
  
 
-          <form id="contact" action="" method="post">
+          <form class="login-form" id="contact" action="" method="post">
             <div class="row">
               <div class="col-md-6">
                   <fieldset>
-                    <input name="username" type="text" class="form-control" placeholder="Username">
+                    <input name="username" id="username-login" type="text" class="form-control" placeholder="Username">
                   </fieldset>
+                  <div class="d-flex justify-content-center"><button type="submit" id="form-login">Log In</button></div>
                 </div>
                 <div class="col-md-6">
                   <fieldset>
-                    <input name="password" type="password" class="form-control" placeholder="Password">
+                    <input id="password-login" name="password" type="password" class="form-control" placeholder="Password">
                   </fieldset>
+                  <div class="d-flex justify-content-center"><button type="button" data-toggle="modal" data-target="#myModal">Sign Up Now !</button></div>
                 </div>
-                <div><button type="submit" id="form-login">Submit</button></div>
-                <div><button type="submit" id="form-signup">Sign Up Now !</button></div>
-                </fieldset>
               </div>
             </div>
           </form>
@@ -78,7 +82,41 @@
       </div>
     </div>
   </section>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <form class="signup-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Signup</h4>
+        </div>
+        <div class="modal-body">
+          <div>
+            <label class="text-uppercase" for="username-signup">username:</label>
+            <input type="text" id="username-signup" />
+          </div>
+          <div>
+            <label class="text-uppercase" for="email-signup">email:</label>
+            <input type="text" id="email-signup" />
+          </div>
+          <div>
+            <label class="text-uppercase" for="password-signup">password:</label>
+            <input type="password" id="password-signup" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit">signup</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 
+<script src="/javascript/login.js"></script>
 </body>  
 </html>  
 
