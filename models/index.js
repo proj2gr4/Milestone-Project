@@ -4,6 +4,7 @@ const Comment = require('./Comment');
 const Goal = require('./Goal');
 const Step = require('./Step');
 const Member_Goal = require('./Member_Goal');
+const User_Step = require('./User_Step');
 
 // User-goal association:
 User.hasMany(Goal, {
@@ -53,4 +54,28 @@ Comment.belongsTo(Goal, {
     foreignKey: 'goal_id'
 })
 
-module.exports = { User, Categories, Comment, Goal, Step, Member_Goal };
+//Goal-Member_goal association:
+Goal.hasMany(Member_Goal, {
+    foreignKey: 'goal_id'
+})
+Member_Goal.belongsTo(Goal, {
+    foreignKey: 'goal_id'
+})
+
+//Step-User_Step association:
+Step.hasMany(User_Step, {
+    foreignKey: 'step_id'
+})
+User_Step.belongsTo(Step, {
+    foreignKey: 'step_id'
+})
+
+//User-User_Step association:
+User.hasMany(User_Step, {
+    foreignKey: 'user_id'
+})
+User_Step.belongsTo(User, {
+    foreignKey:'user_id'
+})
+
+module.exports = { User, Categories, Comment, Goal, Step, Member_Goal, User_Step };

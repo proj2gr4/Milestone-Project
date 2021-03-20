@@ -26,6 +26,11 @@ Member_Goal.init(
                 key: 'id'
             },
             allowNull: false
+        },
+        status:{
+            type: DataTypes.STRING,
+            allowNull:false,
+            defaultValue: 'Started'
         }
     },
     {
