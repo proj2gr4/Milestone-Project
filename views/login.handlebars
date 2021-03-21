@@ -1,55 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
-    <title>Milestone</title>
-    
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/stylesheets/login.css">
-
-    <!-- Additional vendor javascript Files... placing here for now. might move to main.handlebars later. used for modal -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-  </head>
-
-  <body>
-
-  <!--header-->
-  <header class="main-header clearfix" role="header">
-    <div class="logo">
-      <img src="images/milestone logo color.png">
-    </div>
-    <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
-    <nav id="menu" class="main-nav" role="navigation">
-      <ul class="main-menu">
-        <li><a href="homepage.html">Home</a></li>
-        <li class="has-submenu"><a href="homepage.html">About Us ▽ </a>
-          <ul class="sub-menu">
-            <li><a href="#section2">Who we are?</a></li>
-            <li><a href="#section3">What we do?</a></li>
-            <li><a href="#section3">How it works?</a></li>
-          </ul>
-        </li>
-        <li><a href="homepage.html">Contact Us</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="login.html">Login</a></li>
-      </ul>
-    </nav>
-  </header>
-
-
 <!-- ***** Login Form ***** -->
 <section class="section contact" data-section="loginpage" id="login">
     <div class="container">
@@ -83,12 +31,13 @@
       </div>
     </div>
   </section>
+
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
   
     <!-- Modal content-->
-    <div class="modal-content">
+    <div class="modal-content" enctype="multipart/form-data">
       <form class="signup-form">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -107,6 +56,10 @@
             <label class="text-uppercase" for="password-signup">password:</label>
             <input type="password" id="password-signup" />
           </div>
+          <div>
+            <label for="file" style="cursor: pointer;">Upload Profile Picture</label>
+            <input type="file" name="profimage" id="file" > 
+          </div>
         </div>
         <div class="modal-footer">
           <button type="submit">signup</button>
@@ -118,5 +71,3 @@
 </div>
 
 <script src="/javascript/login.js"></script>
-</body>  
-</html>  

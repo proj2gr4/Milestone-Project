@@ -30,6 +30,18 @@ p {
 .logo {
   padding-top: 30px;
 }
+.description {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.instructions {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 100px;
+  line-height: 20px;
+}
 
 .section-heading {
     text-align: center;
@@ -404,3 +416,253 @@ section.courses .owl-carousel button.active {
     overflow-y: auto;
   }
 }
+
+
+/* Coming Soon */
+
+section.coming-soon .continer .counter div {
+display: inline-block;
+}
+section.coming-soon .continer h4 {
+  padding-left: 450px;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 40px;
+  margin-bottom: 50px;
+}
+section.coming-soon .continer h4 em {
+  font-style: normal;
+  color: #f5a425;
+}
+
+@media screen and (max-width: 767px) {
+
+section.coming-soon .continer h4 {
+  text-align: center;
+}
+
+}
+
+section.coming-soon .continer .counter .days,
+section.coming-soon .continer .counter .hours,
+section.coming-soon .continer .counter .minutes,
+section.coming-soon .continer .counter .seconds {
+width: 22%;
+height: 140px;
+float: left;
+text-align: center;
+font-size: 48px;
+font-weight: 800;
+letter-spacing: 1px;
+color: #fff;
+background-color: rgba(250,250,250,0.1);
+}
+@media screen and (max-width: 992px) {
+
+section.coming-soon .continer .counter .days,
+section.coming-soon .continer .counter .hours,
+section.coming-soon .continer .counter .minutes,
+section.coming-soon .continer .counter .seconds {
+  font-size: 26px;
+}
+
+section.coming-soon .continer .counter .days .value,
+section.coming-soon .continer .counter .hours .value,
+section.coming-soon .continer .counter .minutes .value,
+section.coming-soon .continer .counter .seconds .value {
+    margin-top: 40px!important;
+}
+
+section.coming-soon .continer .counter span {
+    font-size: 14px!important;
+}
+
+}
+section.coming-soon .continer .counter .days,
+section.coming-soon .continer .counter .hours,
+section.coming-soon .continer .counter .minutes {
+  margin-right: 4%;
+}
+section.coming-soon .continer .counter .days .value,
+section.coming-soon .continer .counter .hours .value,
+section.coming-soon .continer .counter .minutes .value,
+section.coming-soon .continer .counter .seconds .value {
+  margin-top: 15px;
+  display: block;
+  width: 100%;
+}
+
+section.coming-soon .continer .counter span {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #f5a425;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 0px;
+  display: block;
+}
+
+section.coming-soon .right-content {
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 767px) {
+
+section.coming-soon .right-content {
+    margin-top: 60px;
+    margin-left: 0px;
+}
+
+}
+
+section.coming-soon .top-content {
+  margin-bottom: -8px;
+}
+
+section.coming-soon .top-content h6 {
+  font-size: 14px;
+  color: #fff;
+  background-color: rgba(250,250,250,0.2);
+  padding: 40px;
+  text-align: center;
+  line-height: 24px;
+}
+
+section.coming-soon .top-content h6 em {
+  font-style: normal;
+  font-weight: 600;
+}
+
+section.coming-soon form {
+  background-color: rgba(250,250,250,0.1);
+  padding: 60px 40px;
+  width: 100%;
+  text-align: center;
+}
+
+section.coming-soon form input {
+  width: 100%;
+  height: 40px;
+  background-color: rgba(250,250,250,0.1);
+  border-radius: 0px;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 13px;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+section.coming-soon form input:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+  color: #fff;
+  background-color: rgba(250,250,250,0.1);
+}
+
+section.coming-soon form::placeholder { color: #fff }
+section.coming-soon form input::placeholder { color: #fff; }
+section.coming-soon form input::placeholder { color: #fff; }
+
+section.coming-soon form button {
+  margin-top: 10px;
+  background-color: #f5a425;
+  color: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  padding: 12px 20px;
+  display: inline-block;
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+
+section.courses {
+  background-image: url(../images/choosing-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #172238;
+  padding-bottom: 100px;
+  padding: 0px 30px 100px 30px;
+}
+
+section.courses .item img {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+section.courses .item .down-content {
+  padding: 30px;
+  background-color: #fff;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+section.courses .item .down-content h4 {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #1e1e1e;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+section.courses .item .down-content p {
+  margin-bottom: 25px;
+}
+
+section.courses .item .down-content img {
+  width: 40px;
+  border: 2px solid #f5a425;
+  border-radius: 50%;
+  text-align: left;
+  display: inline-block;
+}
+
+section.courses .item .down-content .text-button-pay {
+  float: right;
+  display: inline-block;
+  margin-top: -30px;
+}
+
+section.courses .item .down-content .text-button-pay a {
+  color: #f5a425;
+  font-size: 13px;
+}
+
+section.courses .item .down-content .text-button-free {
+  float: right;
+  display: inline-block;
+  margin-top: -30px;
+}
+
+section.courses .item .down-content .text-button-free a {
+  color: #7a7a7a;
+  font-size: 13px;
+}
+
+section.courses .owl-carousel .owl-nav {
+  display: none;
+}
+
+section.courses .owl-carousel .owl-dots {
+  text-align: center;
+}
+
+section.courses .owl-carousel button.owl-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  margin: 50px 10px 0px 10px;
+  outline: none;
+}
+section.courses .owl-carousel button.active {
+  background-color: #f5a425;
+}
+

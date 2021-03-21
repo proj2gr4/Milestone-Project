@@ -50,7 +50,7 @@ p {
 }
 
 .section-heading h2 {
-    margin-top: 100px;
+    margin-top: 150px;
     position: relative;
     font-size: 18px;
     font-weight: 500;
@@ -226,7 +226,7 @@ a.menu-link { display: none; }
 .main-menu li .sub-menu {
     position: absolute;
     width: 160px;
-    background-color: #18233a;
+    background-color: #202f49;
     opacity: 0;
     visibility: hidden;
     transition: all 0.5s;
@@ -290,8 +290,7 @@ section.courses {
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #202f49;
-    padding-bottom: 50px;
-    padding: 0px 50px 50px 70px;
+    padding: 0px 50px 50px 50px;
 }
 
 section.courses .item img {
@@ -403,4 +402,8 @@ section.courses .owl-carousel button.active {
     max-height: calc(80px + 100vh);
     overflow-y: auto;
   }
+}
+
+.profileinfo {
+  margin-left: 380px;
 }
