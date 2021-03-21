@@ -1,5 +1,3 @@
-let profPic;
-
 async function loginFormHandler(event) {
     event.preventDefault();
   
@@ -27,26 +25,22 @@ async function loginFormHandler(event) {
   async function signupFormHandler(event) {
     event.preventDefault();
     
-
-    
-
     const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
-    
+    const profile_img = document.getElementById("file");
 
-    console.log(profPic);
-  
+  // Creating a new form data obj and appending with user datas
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("profile_img", profile_img.files[0]);
+    
     if (username && email && password) {
       const response = await fetch('/api/users', {
         method: 'post',
-        body: JSON.stringify({
-          username,
-          email,
-          password,
-          profPic
-        }),
-        headers: { 'Content-Type': 'application/json' }
+        body: formData
       });
   
       if (response.ok) {
@@ -57,15 +51,6 @@ async function loginFormHandler(event) {
     }
   }
 
-
-    const loadFile = function(event) {
-    const image = document.getElementById('output');
-    image.src = URL.createObjectURL(event.target.files[0]);
-    profPic = event.target.files[0];
-    };
-
-  
   document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
-  
   document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
   
