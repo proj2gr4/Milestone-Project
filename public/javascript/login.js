@@ -40,16 +40,17 @@ async function loginFormHandler(event) {
     if (username && email && password) {
       const response = await fetch('/api/users', {
         method: 'post',
-        body: formData
+        body: formData,
+    //   headers: { 'Content-Type': 'application/json' }
       });
-  
       if (response.ok) {
         document.location.replace('/dashboard/');
       } else {
         alert(response.statusText);
       }
     }
-  }
+}
+
 
   document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
   document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
