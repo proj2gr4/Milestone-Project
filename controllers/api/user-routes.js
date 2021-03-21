@@ -92,7 +92,10 @@ router.post('/', upload.single('profile_img'), (req, res) => {
         
         res.json(dbUserData);
     })
-    .catch(err => {res.status(500).json(err)});
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    });
 
 
 });
