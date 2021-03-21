@@ -1,0 +1,73 @@
+<!-- ***** Login Form ***** -->
+<section class="section contact" data-section="loginpage" id="login">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Welcome to Milestone</h2>
+          </div>
+        </div>
+        <div class="col-md-6">
+ 
+
+          <form class="login-form" id="contact" action="" method="post">
+            <div class="row">
+              <div class="col-md-6">
+                  <fieldset>
+                    <input name="username" id="username-login" type="text" class="form-control" placeholder="Username">
+                  </fieldset>
+                  <div class="d-flex justify-content-center"><button type="submit" id="form-login">Log In</button></div>
+                </div>
+                <div class="col-md-6">
+                  <fieldset>
+                    <input id="password-login" name="password" type="password" class="form-control" placeholder="Password">
+                  </fieldset>
+                  <div class="d-flex justify-content-center"><button type="button" data-toggle="modal" data-target="#myModal">Sign Up Now !</button></div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content" enctype="multipart/form-data">
+      <form class="signup-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Signup</h4>
+        </div>
+        <div class="modal-body">
+          <div>
+            <label class="text-uppercase" for="username-signup">username:</label>
+            <input type="text" id="username-signup" />
+          </div>
+          <div>
+            <label class="text-uppercase" for="email-signup">email:</label>
+            <input type="text" id="email-signup" />
+          </div>
+          <div>
+            <label class="text-uppercase" for="password-signup">password:</label>
+            <input type="password" id="password-signup" />
+          </div>
+          <div>
+            <label for="file" style="cursor: pointer;">Upload Profile Picture</label>
+            <input type="file" name="profimage" id="file" > 
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit">signup</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/javascript/login.js"></script>

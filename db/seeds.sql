@@ -3,7 +3,8 @@ INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("Fazle 
 INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("test1", "test1@mail.com", "user1234", null);
 INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("test2", "test2@mail.com", "user1234", "uploads\\1593682294248.jpg");
 INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("test3", "test3@mail.com", "user1234", "uploads\\1593682294248.jpg");
-
+INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("Curtis", "cj1988333@hotmail.com", "PizzaMan", "uploads\\e66b795e-ff3f-4ad1-8111-19121bc01b0b.jpg");
+INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("Lernantino", "lernantino@gmail.com", "password1234", "uploads\\54726f87-2ded-4501-aae4-01c3a98bb0de.jpg");
 -- Categories:
 INSERT INTO `categories` (`category_name`,`created_at`, `updated_at`) VALUES ("Fitness","2021-03-19","2021-03-19");
 INSERT INTO `categories` (`category_name`,`created_at`, `updated_at`) VALUES ("Health","2021-03-19","2021-03-19");

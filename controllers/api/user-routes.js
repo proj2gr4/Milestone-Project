@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 });
 // filter jpeg/png files:
 const fileFilter = (req, file, cb) =>{
-    if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
+    if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === 'image/jpg'){
         cb(null, true);
     }else{
         cb(null, false);
@@ -92,7 +92,10 @@ router.post('/', upload.single('profile_img'), (req, res) => {
         
         res.json(dbUserData);
     })
-    .catch(err => {res.status(500).json(err)});
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    });
 
 
 });
