@@ -41,12 +41,14 @@ router.get('/', (req, res) => {
       .then(dbCatData => {
         // serialize data before passing to template
         const categories = dbCatData.map(category => category.get({ plain: true }));
-        res.render('dashboard', { goals, categories, loggedIn: req.session.loggedIn  });
+        res.render('dashboard', { goals, categories  });
       })
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
       });
   });
+
+
 
 module.exports = router;
