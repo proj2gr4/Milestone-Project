@@ -1,0 +1,85 @@
+ 
+ <!-- ***** Dashboard ***** -->
+<section class="section courses">
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+                <h2>Welcome to Milestone</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-button" data-toggle="modal" data-target="#myModal">
+                  <div class="scroll-to-section"><a href="#section2">Create a Goal!</a></div>
+    </div>
+    <div class="owl-theme">
+        {{#if goals.length}}
+            {{#each goals as |goal|}}
+                <div class="item">
+                    <br>
+                    <div class="down-content">
+                    {{> goal-info goal}}
+                    </div>
+                </div>
+            {{/each}}
+        {{/if}}
+        
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content" enctype="multipart/form-data">
+      <form class="create-goal-form">
+        <div class="modal-header">
+            <h4 class="modal-title">Create a Goal</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div>
+                <label for="goal-title">Title</label>
+                <input name="goal-title" type="text" />
+            </div>
+            <div>
+                <label for="goal-category">Category</label>
+                <select id="goal-category" name="goal-category">
+                    {{#if categories.length}}
+                        {{#each categories as |category|}}                        
+                                <option value="{{this.id}}">{{this.category_name}}</option>
+                        {{/each}}
+                    {{/if}}
+                </select>
+            </div>
+            <div>
+                <label for="goal-sub-category">Sub-category</label>
+                <input id="goal-sub-category" name="goal-sub-category" type="text" />
+            </div>
+             
+            <div>
+                <label for="goal-description">Description</label>
+                <textarea id="goal-description" name="post-content"></textarea>
+            </div>
+            <div >
+                <label for="goalDueDate">Due date</label>
+                <input type="date" id="goalDueDate" name="goalDueDate"  />
+            </div>
+            <div>
+                <label for="file" style="cursor: pointer;">Upload Image</label>
+                <input type="file" name="image" id="file" > 
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit">Create</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/javascript/dashboard.js"></script>
