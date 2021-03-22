@@ -35,7 +35,7 @@
     </div>
   </section>
 
-    <section class="section">
+    <section class="section courses pt-5">
         <div class="container">
             <div class="row">
                 {{#each users}}
@@ -44,7 +44,7 @@
                         <a href="/profile/{{this.id}}">{{this.username}}</a> 
                         created a new goal: 
                         {{#each this.goals as |goal|}} 
-                            <a href="/goal/{{goal.id}}">{{goal.title}}</a> 
+                            <a href="/goals/{{goal.id}}">{{goal.title}}</a> 
                             on {{format_dateTwo goal.createdAt}} in <a href="/categories/{{category_id}}">{{goal.subcategory}}</a>
                         {{/each}}</p>
                     </div>

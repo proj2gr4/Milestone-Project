@@ -8,6 +8,11 @@ router.get('/', (req, res) => {
         let categories = dbCategoriesData.map(cat => cat.get({ plain: true }));
             
         User.findAll({
+            // limit : 15,
+            // order: [
+            //     // Will escape full_name and validate DESC against a list of valid direction parameters
+            //     ['id', 'DESC']
+            // ],
             include: [
                 {
                     model: Goal,
