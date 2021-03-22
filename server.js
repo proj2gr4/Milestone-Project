@@ -7,6 +7,18 @@ const helpers = require('./utils/helpers');
 
 const hbs = exphbs.create({helpers});
 
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const sess = {
+    secret: 'Super secret secret',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+      db: sequelize
+    })
+  };
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -16,6 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
 app.use('/uploads', express.static('uploads'));
+app.use(session(sess));
 
 app.use(routes);
 // turn on connection to db and server
