@@ -14,6 +14,10 @@ Categories.init(
         category_name: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        img_url:{
+            type: DataTypes.STRING,
+            allowNull: false
         }
     },
     {
