@@ -28,7 +28,8 @@ router.get('/:id', (req, res) =>{
 // POST /api/categories
 router.post('/', (req, res) =>{
     Categories.create({
-        category_name: req.body.category_name
+        category_name: req.body.category_name,
+        img_url: req.body.img_url
     })
     .then(dbCategoriesData => res.json(dbCategoriesData))
     .catch(err =>{res.status(500).json(err)});
