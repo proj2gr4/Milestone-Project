@@ -54,7 +54,7 @@ router.get('/', (req, res) => {
         const profile = dbProfileData.get({ plain: true});
         // console.log(profile.goals[0].category.category_name);
         // if(profile.goal)
-        res.render('profile', {profile: profile});
+        res.render('profile', {profile: profile, loggedIn: req.session.loggedIn});
     }).catch(err =>{res.status(500).json(err)});
 
 })

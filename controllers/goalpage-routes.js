@@ -15,7 +15,7 @@ function calculateTime(exam_end_at) {
             const minutes = totalMinutes - ( totalDays * 24 * 60 ) - ( hours * 60 );
             const seconds = totalSeconds - ( totalDays * 24 * 60 * 60 ) - ( hours * 60 * 60 ) - ( minutes * 60 );
             return {totalDays, hours, minutes, seconds}
-        }
+}
         
         
         
@@ -39,7 +39,7 @@ router.get('/:id', (req, res) => {
     }).then(dbGoalData=>{
         const goal = dbGoalData.get({ plain: true});
         // console.log(goal.due_date);
-        res.render('goalspage', {goal: goal, time: calculateTime(goal.due_date) });
+        res.render('goalspage', {goal: goal, time: calculateTime(goal.due_date), loggedIn: req.session.loggedIn });
     }).catch(err =>{res.status(500).json(err)});
 
 })
