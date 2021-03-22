@@ -1,6 +1,6 @@
 -- USER:
 INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("Fazle Ryan C", "ryan7998@gmail.com", "user1234", "uploads\\fazle.jpg");
-INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("test1", "test1@mail.com", "user1234", "");
+INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("test1", "test1@mail.com", "user1234", "test");
 INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("test2", "test2@mail.com", "user1234", "uploads\\1593682294248.jpg");
 INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("test3", "test3@mail.com", "user1234", "uploads\\1593682294248.jpg");
 INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("Curtis", "cj1988333@hotmail.com", "PizzaMan", "uploads\\e66b795e-ff3f-4ad1-8111-19121bc01b0b.jpg");
