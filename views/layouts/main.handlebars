@@ -12,16 +12,9 @@
     <title>Milestone</title>
     
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="/assets/Friendstatus_css/assets/css/friendstatus.css">
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="/assets/stylesheets/homepage.css">
-    <link rel="stylesheet" href="/assets/css/owl.css">
-    <link rel="stylesheet" href="/assets/css/lightbox.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/stylesheets/goalpage.css">
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/stylesheets/homepage.css">
     <link rel="stylesheet" href="assets/css/owl.css">
@@ -32,7 +25,9 @@
 <body>
   <!--header-->
   <header class="main-header clearfix" role="header">
-    <div class="logo"><a href="/"><img src="/images/milestone logo color.png"></a></div>
+    <div class="logo">
+      <img src="images/milestone logo color.png">
+    </div>
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
       <ul class="main-menu">
@@ -44,16 +39,9 @@
             <li><a href="#section3">How it works?</a></li>
           </ul>
         </li> --}}
-        <li><a href="/profile">Profile</a></li>
-        <li><a href="/dashboard">Dashboard</a></li>
         <li><a href="#contactus">Contact Us</a></li>
-        {{#if loggedIn}}
-            <li id="logout"><a href="#">Logout</a></li>
-            {{!-- <button id="logout" class="btn-no-style">logout</button> --}}
-        {{else}}
-          <li><a href="/login">Login</a></li>
-        {{/if}}
-
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/login">Login</a></li>
       </ul>
     </nav>
   </header>
@@ -61,9 +49,6 @@
   {{{body}}}
   
   <!-- Scripts -->
-    {{#if loggedIn}}
-      <script src="/javascript/logout.js"></script>
-    {{/if}}
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
