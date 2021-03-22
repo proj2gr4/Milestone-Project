@@ -6,9 +6,9 @@ INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("test3"
 INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("Curtis", "cj1988333@hotmail.com", "PizzaMan", "uploads\\e66b795e-ff3f-4ad1-8111-19121bc01b0b.jpg");
 INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("Lernantino", "lernantino@gmail.com", "password1234", "uploads\\54726f87-2ded-4501-aae4-01c3a98bb0de.jpg");
 -- Categories:
-INSERT INTO `categories` (`category_name`, `img_url`, `created_at`, `updated_at`) VALUES ("Fitness","/images/img3.jpg","2021-03-19","2021-03-19");
-INSERT INTO `categories` (`category_name`,`img_url`,`created_at`, `updated_at`) VALUES ("Health","/images/img4.jpg","2021-03-19","2021-03-19");
-INSERT INTO `categories` (`category_name`,`img_url`,`created_at`, `updated_at`) VALUES ("Education","/images/img2.jpg","2021-03-19","2021-03-19");
+INSERT INTO `categories` (`category_name`, `img_url`, `created_at`, `updated_at`) VALUES ("Fitness", "/images/img3.jpg", "2021-03-19", "2021-03-19");
+INSERT INTO `categories` (`category_name`, `img_url`, `created_at`, `updated_at`) VALUES ("Health", "/images/img4.jpg", "2021-03-19", "2021-03-19");
+INSERT INTO `categories` (`category_name`, `img_url`, `created_at`, `updated_at`) VALUES ("Education", "/images/img2.jpg", "2021-03-19", "2021-03-19");
 
 -- Goal:
 INSERT INTO `goal` (`title`,`user_id`,`description`,`category_id`,`subcategory`,`due_date`,`status`,`created_at`,`updated_at`) VALUES ("Loose 7kg", 1, "Loose 7 kg in three month by weight training and cardio", 1, "Strength Training", "2021-05-19", "started", "2021-03-19", "2021-03-19");
