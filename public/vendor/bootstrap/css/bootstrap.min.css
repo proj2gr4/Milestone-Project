@@ -351,6 +351,8 @@ h4 {
 .h5,
 h5 {
   font-size: 1.25rem;
+  color: #fff;
+  line-height: 3em;
 }
 .h6,
 h6 {
@@ -5600,7 +5602,6 @@ a.close.disabled {
 }
 .modal-header {
   display: -ms-flexbox;
-  display: flex;
   -ms-flex-align: start;
   align-items: flex-start;
   -ms-flex-pack: justify;
@@ -5617,12 +5618,14 @@ a.close.disabled {
 .modal-title {
   margin-bottom: 0;
   line-height: 1.5;
+  color:#121b2f;
 }
 .modal-body {
   position: relative;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   padding: 1rem;
+  color: #f5a425;
 }
 .modal-footer {
   display: -ms-flexbox;
@@ -5640,6 +5643,7 @@ a.close.disabled {
 }
 .modal-footer > * {
   margin: 0.25rem;
+  background-color:#f5a425;
 }
 .modal-scrollbar-measure {
   position: absolute;

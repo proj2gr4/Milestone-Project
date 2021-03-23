@@ -133,13 +133,13 @@
             <div class="row">
                 {{#each users}}
                     <div class="col-12">
-                        <p><img class="img-thumbnail rounded" style ="width:50px" src="{{this.profile_img}}"></img> 
+                        <h5><img class="img-thumbnail rounded" style ="width:50px" src="{{this.profile_img}}"></img> 
                         <a href="/profile/{{this.id}}">{{this.username}}</a> 
                         created a new goal: 
                         {{#each this.goals as |goal|}} 
                             <a href="/goals/{{goal.id}}">{{goal.title}}</a> 
                             on {{format_dateTwo goal.createdAt}} in <a href="/categories/{{category_id}}">{{goal.subcategory}}</a>
-                        {{/each}}</p>
+                        {{/each}}</h5>
                     </div>
                 {{/each}}
             </div>
