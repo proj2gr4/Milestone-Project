@@ -31,7 +31,7 @@ User_Step.init(
         status: {
             type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: 'Started'
+            defaultValue: 'Not Started'
         },
         img_url: {
             type: DataTypes.STRING,
