@@ -1,0 +1,125 @@
+<!-- ***** Goal Information ***** -->
+<section class="section courses">
+    <div class="container">
+        <div class="row">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="container">
+                            <div class="col-md-12 text-center">
+                                <div class="section-heading"><h2>{{goal.title}}</h2></div>
+                                <p class="text-center">Created by <a href="/profile/{{goal.user.id}}">{{goal.user.username}}</a></p>
+                                <div class="description mb-5"><h2>{{goal.description}}</h2></div>
+                                <div class="instructions mb-5">
+                                    <div class="section-heading"><h2>Steps to reach the goal</h2></div>
+                                    <ul class="p-5">
+                                        {{#each goal.steps as |step|}}
+                                            <li class="mb-5 bg-dark p-5">
+                                                <h4>{{step.title}}</h4>
+                                                <p>{{step.description}}</p>
+                                                <p>your starting date: {{format_dateTwo step.start_date}} and complete it by {{format_dateTwo step.due_date}}</p>
+                                                <p>
+                                                    {{#each step.user_steps as |users|}}
+                                                        {{#if users.user.profile.profile_img}}
+                                                            <img src="/{{users.user.profile.profile_img}}" class="rounded img-thumbnail" style="max-width:50px" >
+                                                        {{else}}
+                                                            <img src="/images/default-img.jpg" class="rounded img-thumbnail" style="max-width:50px" >
+                                                        {{/if}}
+                                                            {{!-- <img src="/{{users.user.profile}}"> --}}
+                                                        <a href="/profile/{{users.user.id}}">{{users.user.username}}'s</a> status in this step is: {{users.status}}
+                                                    {{/each}}     
+                                                </p>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                                {{!-- add new category button (if owner of the post) --}}
+                                {{#if postOwner}} <button id="add-category-btn" type="button" class="btn btn-success" data-toggle="modal" data-target="#addCategoryModal">Add New Step</button> {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <section class="section coming-soon">
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-md-7 col-xs-12">
+                        <div class="continer centerIt">
+                            <h4>Take a <em> BIG step</em></h4>
+                                <div class="counter">
+                                    <div class="days">
+                                        <div class="value">{{time.totalDays}}</div>
+                                        <span>Days</span>
+                                    </div>
+
+                                    <div class="hours">
+                                        <div class="value">{{time.hours}}</div>
+                                        <div class="value"></div>
+                                        <span>Hours</span>
+                                    </div>
+
+                                    <div class="minutes">
+                                        <div class="value">{{time.minutes}}</div>
+                                        <span>Minutes</span>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+    <section class="section coming-soon">
+                <div id="spacer" style="height: 130px;"></div>
+                <h4>Discussion:</h4>
+                {{#if loggedIn}}
+                    <form class="comment-form">
+                        <div>
+                            <textarea name="comment-body"style="height: 130px; width: 70%;" ></textarea>
+                        </div>
+                        <div>
+                            <button class="main-button" id="button-comment" type="submit">add comment</button>
+                        </div>
+                    </form>
+                {{/if}}
+                {{> comments goal.comments}}    
+            </div>
+        </div>
+    </section>
+</section>
+
+<!-- Modal -->
+<div class="modal fade text-dark" id="addCategoryModal" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <!-- Modal content-->
+        <div class="modal-content" enctype="multipart/form-data">
+            <div class="modal-header">
+                <h4 class="modal-title">Create a Step</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form class="create-step-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="cat-title" placeholder="Title">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="cat-description" rows="3" placeholder="Description"></textarea>
+                    </div>
+                    <div >
+                        <label for="stepStartDate">Start date</label>
+                        <input type="date" id="stepStartDate" name="stepStartDate" />
+                    </div> 
+                    <div >
+                        <label for="stepDueDate">Due date</label>
+                        <input type="date" id="stepDueDate" name="stepDueDate" />
+                    </div> 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/javascript/comment.js"></script>
+{{!-- add js if goalowner visits goal page --}}
+{{#if postOwner}}<script src="/javascript/addcategory.js"></script>{{/if}}

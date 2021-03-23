@@ -107,6 +107,12 @@
             <label class="text-uppercase" for="password-signup">password:</label>
             <input type="password" id="password-signup" />
           </div>
+          <div>
+            <label for="file" style="cursor: pointer;">Upload Profile Picture</label>
+            <input type="file"  accept="image/jpg, image/jpeg, image/png" name="image" id="file" onchange="loadFile(event)">
+            <img id="output" width="200" />
+            
+          </div>
         </div>
         <div class="modal-footer">
           <button type="submit">signup</button>
