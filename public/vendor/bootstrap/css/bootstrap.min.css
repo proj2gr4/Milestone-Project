@@ -347,6 +347,7 @@ h3 {
 .h4,
 h4 {
   font-size: 1.5rem;
+  color: #f5a425;
 }
 .h5,
 h5 {
@@ -6276,7 +6277,7 @@ button.bg-light:hover {
   background-color: #dae0e5 !important;
 }
 .bg-dark {
-  background-color: #343a40 !important;
+  background-color: rgba(250,250,250,0.25) !important;
 }
 a.bg-dark:focus,
 a.bg-dark:hover,
