@@ -1,4 +1,5 @@
 <!-- Profile Information -->
+<<<<<<< HEAD
      <section class="section courses">
       <div class="container-fluid">
         <div class="row">
@@ -21,11 +22,40 @@
                       <li><i class="fa fa-star"></i></li>
                       <li><i class="fa fa-star"></i></li>
                     </ul>
+=======
+<section class="section courses">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <section class="section-heading">
+          <h2>Hello {{profile.username}} Welcome to your profile page</h2>
+          <div class="container">
+            <section class="profileinfo row p-5">
+              <div class="col-md-6 .img-thumbnail">
+                {{#if profile.profile_img}}
+                <img src="/{{profile.profile_img}}" class="rounded img-thumbnail" style="max-width:200px" >
+                {{else}}
+                <img src="/images/default-img.jpg" class="rounded img-thumbnail" style="max-width:200px" >
+                {{/if}}
+              </div>
+              <div class="col-md-6">
+                <div class="product-item1">
+                  <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>
+                  <div class="down-content1">
+                    <h5 class="text-white" >Your Email: {{profile.email}}</h3>
+                    <div class="scroll-to-section"><a href="#">View your posts</a></div>
+                    <div class="scroll-to-section"><a href="#">View your comments</a></div>
+                    <ul class="stars">
+                        <li><i class="fa fa-star"></i></li>
+                    </ul>
+
+>>>>>>> ebe45f86f49aab1d2738a9f999c670bc7bb2e8cd
                     <div class="scroll-to-section"><a href="dashboard.html">View Dashboard</a></div>
                   </div>
                 </div>
               </div>
             </section>
+<<<<<<< HEAD
           
 
      
@@ -125,3 +155,77 @@
                 <span p class="btn btn-success">Join in</span>
               </div>
             </section>
+=======
+
+            {{!-- Goals: --}}
+            <h2>Goals you created: </h2>
+            <div class="row justify-content-center">
+              {{#each profile.goals as |goal|}}
+                <div class="col-12 col-md-4 p-5 mt-3 text-white">
+                    <a href="/goals/{{goal.id}}"><img src="{{goal.category.img_url}}" class="rounded-circle img-fluid border"></a>
+                    <h2 class="h5 text-center mt-3 mb-3">{{goal.title}}</h2>
+                    <p class="text-white">{{goal.description}}</p>
+                    {{!-- <p class="text-center text-white"><a class="btn btn-success">Start</a></p> --}}
+                    <p class="text-white">'{{goal.title}}' goal belongs to 
+                    <a href="/categories/{{goal.category.id}}"> {{goal.category.category_name}}</a> category and the status is {{goal.Status}} which is due on {{format_dateTwo goal.due_date}}</p>
+                    {{!-- <p class="text-white">Due Date: {{format_dateTwo goal.due_date}}</p> --}}
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </section>
+
+        <!-- Friend Status -->
+        <section class="section courses">
+          <div class="col-md-12">
+            <section class="section-heading">
+              <h2>Members participating with you</h2>
+              <div class="container">
+                {{#each profile.goals as |goals|}}
+                  <div class="row justify-content-center">
+                    {{#each goals.member_goals as |member_goals|}}
+                      <div class="col-md-3 mb-5">
+                        <div class="product-item">
+                          {{#if member_goals.user.profile_img}}
+                            <a href="#"><img src="/{{member_goals.user.profile_img}}" alt=""></a>
+                          {{else}}
+                            <a href="#"><img src="/images/default-img.jpg" alt=""></a>
+                          {{/if}}
+                          <div class="down-content">
+                            <a href="#"><h4>{{member_goals.user.username}}</h4></a>
+                            <p class="text-white">{{goals.title}}</p>
+                            <p class="text-white">Status: {{goals.status}}</p>
+                            <p class="text-white">Started on: {{format_dateTwo goals.createdAt}}</p>
+                            {{!-- <p class="text-white">Lasted updated on: {{format_dateTwo goals.updatedAt}}</p> --}}
+
+                            <span p class="btn btn-success">Join in</span>
+                          </div>
+                        </div>
+                      </div>
+                    {{/each}}
+                  </div>
+                {{/each}}
+              </div>
+            </section>
+          </div>
+        </section>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/FriendStatus/jquery/jquery.min.js"></script>
+    <script src="/vendor/FriendStatus/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Additional Scripts -->
+    <script src="/assets/FriendStatus/js/custom.js"></script>
+    <script src="/assets/FriendStatus/js/owl.js"></script>
+    <script src="/assets/FriendStatus/js/slick.js"></script>
+    <script src="/assets/FriendStatus/js/isotope.js"></script>
+    <script src="/assets/FriendStatus/js/accordions.js"></script>
+
+  
+>>>>>>> ebe45f86f49aab1d2738a9f999c670bc7bb2e8cd
