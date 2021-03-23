@@ -1,6 +1,7 @@
 const sequelize = require('../../config/connection');
 const router = require('express').Router();
 const {Categories, Comment, Goal, Member_Goal, Step, User} = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // Get /api/goals:
 router.get('/', (req, res) =>{
@@ -34,7 +35,7 @@ router.get('/:id', (req, res) =>{
 });
 
 //Post /api/goals/
-router.post('/', (req, res) =>{
+router.post('/', withAuth, (req, res) =>{
     Goal.create({
         title: req.body.title,
         user_id: req.session.user_id,
@@ -49,7 +50,7 @@ router.post('/', (req, res) =>{
 });
 
 // Delete /api/goals/:id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Goal.destroy({
         where:{id: req.params.id}
     })
@@ -58,7 +59,7 @@ router.delete('/:id', (req, res) => {
 });
 
 // Put /api/goals/:id
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Goal.update(
         {
             title: req.body.title,

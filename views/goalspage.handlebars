@@ -34,21 +34,24 @@
                                     </ul>
                                 </div>
                                 {{!-- add new category button (if owner of the post) --}}
-                                {{#if postOwner}} <button id="add-category-btn" type="button" class="btn btn-success" data-toggle="modal" data-target="#addCategoryModal">Add New Step</button> {{/if}}
+                                {{#if postOwner}} <button id="add-category-btn" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addCategoryModal">Add New Step</button> {{/if}}
+                                {{!-- update status: --}}
+                                {{#if member_goal.status}}
+                                    <select class="btn btn-success btn-lg form-select form-select-lg" aria-label=".form-select-lg example">
+                                        <option selected>{{member_goal.status}}</option>
+                                        <option value="1">Not Started</option>
+                                        <option value="2">Completed</option>
+                                    </select>
+                                    {{!-- Cancel Participation Button: --}}
+                                    <button id="cancelParticpateBtn" class="btn btn-danger btn-lg" memberGoalsId = "{{member_goal.id}}">Cancel Participation</button>
+                                {{else}}
+                                    {{!-- Participate Button: --}}
+                                    <button id="particpateBtn" class="btn btn-success btn-lg" userId = "{{currentUser.id}}">Participate</button>
+                                {{/if}}
                             </div>
                         </div>
                     </div>
-                    {{!-- add new category button (if owner of the post) --}}
-                    {{!-- {{#if postOwner}} <button id="add-category-btn" type="button" class="btn btn-success" data-toggle="modal" data-target="#addCategoryModal">Add New Step</button> {{/if}} --}}
                     
-                    {{!-- update status: --}}
-                    <select class="btn btn-success form-select form-select-lg" aria-label=".form-select-lg example">
-                        {{#unless goal.member_goal}}<option selected>{{goal.member_goal}}</option>{{/unless}}
-                        <option selected>Not Started yet</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                    </select>
                 </div>
                 <section class="section coming-soon" data-section="section3">
                     <div class="container">
@@ -80,6 +83,7 @@
                     </div>
                 </section>
             </div>
+            
             {{!-- Comment: --}}
             <div class="col-md-3">
                 <div id="spacer" style="height: 130px;"></div>
@@ -135,5 +139,7 @@
     </div>
 </div>
 <script src="/javascript/comment.js"></script>
+<script src="/javascript/participateGoal.js"></script>
+<script src="/javascript/deleteParticipation.js"></script>
 {{!-- add js if goalowner visits goal page --}}
 {{#if postOwner}}<script src="/javascript/addcategory.js"></script>{{/if}}

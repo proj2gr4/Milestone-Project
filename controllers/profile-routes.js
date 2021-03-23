@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const {Categories, Comment, Goal, Member_Goal, Step, User} = require('../models');
+const withAuth = require('../utils/auth');
 
 router.get('/:id', (req, res) => {
     User.findOne({
@@ -30,7 +31,7 @@ router.get('/:id', (req, res) => {
     }).catch(err =>{res.status(500).json(err)});
 });
 
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
     User.findOne({
         attributes: {exclude: ['password']},
         where:{

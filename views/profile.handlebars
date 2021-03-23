@@ -87,8 +87,7 @@
                             <p class="text-white">Status: {{goals.status}}</p>
                             <p class="text-white">Started on: {{format_dateTwo goals.createdAt}}</p>
                             {{!-- <p class="text-white">Lasted updated on: {{format_dateTwo goals.updatedAt}}</p> --}}
-
-                            <span p class="btn btn-success">Join in</span>
+                            <a class="btn btn-warning" href="/profile/{{member_goals.user.id}}"> View Profile</a>
                           </div>
                         </div>
                       </div>
