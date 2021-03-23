@@ -2,7 +2,6 @@
 <section class="section courses">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="container">
@@ -11,7 +10,7 @@
                                 <p class="text-center">Created by <a href="/profile/{{goal.user.id}}">{{goal.user.username}}</a></p>
                                 <div class="description mb-5"><h2>{{goal.description}}</h2></div>
                                 <div class="instructions mb-5">
-                                    <h2>Steps to reach the goal</h2>
+                                    <div class="section-heading"><h2>Steps to reach the goal</h2></div>
                                     <ul class="p-5">
                                         {{#each goal.steps as |step|}}
                                             <li class="mb-5 bg-dark p-5">
@@ -83,15 +82,13 @@
                     </div>
                 </section>
             </div>
-            
-            {{!-- Comment: --}}
-            <div class="col-md-3">
+    <section class="section coming-soon">
                 <div id="spacer" style="height: 130px;"></div>
                 <h4>Discussion:</h4>
                 {{#if loggedIn}}
                     <form class="comment-form">
                         <div>
-                            <textarea name="comment-body"></textarea>
+                            <textarea name="comment-body"style="height: 130px; width: 70%;" ></textarea>
                         </div>
                         <div>
                             <button class="main-button" id="button-comment" type="submit">add comment</button>

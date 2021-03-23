@@ -83,9 +83,17 @@ p {
 }
 
 .comment:nth-child(odd) {
+<<<<<<< HEAD
   background-color:rgba(250,250,250,0.1);
 }
 
+=======
+  background-color:#ededed;
+}
+.comment:nth-child(even) {
+  background-color:rgb(160, 160, 160);
+}
+>>>>>>> 41f338e96cc9220fdbeb221a6b35b3c1d8b70c58
 .comment .meta {
   font-size: 90%;
   margin-bottom: .5%;
@@ -93,6 +101,10 @@ p {
 #button-comment {
   background-color: #f5a425;
   color: #fff;
+<<<<<<< HEAD
+=======
+  padding: 20px 20px;
+>>>>>>> 41f338e96cc9220fdbeb221a6b35b3c1d8b70c58
   text-transform: uppercase;
 
 }
