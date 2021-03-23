@@ -23,13 +23,15 @@ router.get('/:id', (req, res) =>{
 
 //Post /api/comments
 router.post('/', (req, res) =>{
-    Comment.create({
-        user_id: req.body.user_id,
-        goal_id: req.body.goal_id,
-        comment: req.body.comment
-    })
-    .then(dbCommentData => res.json(dbCommentData))
-    .catch(err =>{res.status(500).json(err)});
+    if (req.session) {
+        Comment.create({
+            user_id: req.session.user_id,
+            goal_id: req.body.goal_id,
+            comment: req.body.comment
+        })
+        .then(dbCommentData => res.json(dbCommentData))
+        .catch(err =>{res.status(500).json(err)});
+    }
 });
 
 // Delete /api/comments/:id
