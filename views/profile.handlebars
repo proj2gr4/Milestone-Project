@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-12">
         <section class="section-heading">
-          <h2>Hello {{profile.username}} Welcome to your profile page</h2>
+          <h2>Hello <b>{{profile.username}}</b> welcome to your profile page</h2>
           <div class="container">
             <section class="profileinfo row p-5">
               <div class="col-md-6 .img-thumbnail">
@@ -31,8 +31,8 @@
               </div>
             </section>
 
-            {{!-- Goals: --}}
-            <h2>Goals you created: </h2>
+            {{!-- Goals created: --}}
+            <h2>Goals {{profile.username}} Created: </h2>
             <div class="row justify-content-center">
               {{#each profile.goals as |goal|}}
                 <div class="col-12 col-md-4 p-5 mt-3 text-white">
@@ -42,6 +42,22 @@
                     {{!-- <p class="text-center text-white"><a class="btn btn-success">Start</a></p> --}}
                     <p class="text-white">'{{goal.title}}' goal belongs to 
                     <a href="/categories/{{goal.category.id}}"> {{goal.category.category_name}}</a> category and the status is {{goal.Status}} which is due on {{format_dateTwo goal.due_date}}</p>
+                    {{!-- <p class="text-white">Due Date: {{format_dateTwo goal.due_date}}</p> --}}
+                </div>
+              {{/each}}
+            </div>
+
+            {{!-- Goals Participating in: --}}
+            <h2>Goals {{profile.username}} Participating</h2>
+            <div class="row justify-content-center">
+              {{#each profile.member_goals as |goals|}}
+                <div class="col-12 col-md-4 p-5 mt-3 text-white">
+                    <a href="/goals/{{goals.goal.id}}"><img src="{{goals.goal.category.img_url}}" class="rounded-circle img-fluid border"></a>
+                    <h2 class="h5 text-center mt-3 mb-3">{{goals.goal.title}}</h2>
+                    <p class="text-white">{{goals.goal.description}}</p>
+                    {{!-- <p class="text-center text-white"><a class="btn btn-success">Start</a></p> --}}
+                    <p class="text-white">'{{goals.goal.title}}' goal belongs to 
+                    <a href="/categories/{{goals.goal.category.id}}"> {{goals.goal.category.category_name}}</a> category and the status is {{goals.goal.Status}} which is due on {{format_dateTwo goals.goal.due_date}}</p>
                     {{!-- <p class="text-white">Due Date: {{format_dateTwo goal.due_date}}</p> --}}
                 </div>
               {{/each}}

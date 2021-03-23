@@ -48,11 +48,20 @@ router.get('/', (req, res) => {
                         model:Categories
                     }
                 ]
+            },
+            {
+                model:Member_Goal,
+                include:[
+                    {
+                        model:Goal,
+                        include:[{model:Categories}]
+                    }
+                ]
             }
         ]
     }).then(dbProfileData=>{
         const profile = dbProfileData.get({ plain: true});
-        // console.log(profile.goals[0].category.category_name);
+        // console.log(profile.member_goals);
         // if(profile.goal)
         res.render('profile', {profile: profile, loggedIn: req.session.loggedIn});
     }).catch(err =>{res.status(500).json(err)});

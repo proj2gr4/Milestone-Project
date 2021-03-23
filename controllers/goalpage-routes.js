@@ -33,12 +33,12 @@ router.get('/:id', (req, res) => {
                     }
                 ]
             },
-            {model:User}
+            {model:User}, {model:Member_Goal}
         ]
     }).then(dbGoalData=>{
         const goal = dbGoalData.get({ plain: true});
         let owner = (req.session.user_id === goal.user.id) ? true : false
-        // console.log(owner);
+        console.log(goal);
         res.render('goalspage', {goal: goal, time: calculateTime(goal.due_date), loggedIn: req.session.loggedIn, postOwner: owner });
     }).catch(err =>{res.status(500).json(err)});
 
