@@ -31,9 +31,7 @@ router.get('/:id', (req, res) => {
                     }
                 ]
             },
-<<<<<<< HEAD
-            {model:User}, {model:Member_Goal}
-=======
+            {model:User}, {model:Member_Goal},
             {
                 model: Comment,
                 attributes: ['id', 'user_id', 'comment', 'created_at'],
@@ -43,7 +41,6 @@ router.get('/:id', (req, res) => {
                 }
             },
             {model:User}
->>>>>>> 1450c7ccc7fbc25ad7d18385ab35652740802a8f
         ]
     }).then(dbGoalData=>{
         const goal = dbGoalData.get({ plain: true});
