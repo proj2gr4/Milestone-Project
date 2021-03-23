@@ -16,6 +16,7 @@
     </div>
     <div class="owl-theme">
         {{#if goals.length}}
+            {{#if categoryPage}}<h2>{{categoryPage}}</h2>{{/if}}
             {{#each goals as |goal|}}
                 <div class="item">
                     <br>
@@ -50,7 +51,7 @@
                 <select id="goal-category" name="goal-category">
                     {{#if categories.length}}
                         {{#each categories as |category|}}                        
-                                <option value="{{this.id}}">{{this.category_name}}</option>
+                            <option value="{{this.id}}">{{this.category_name}}</option>
                         {{/each}}
                     {{/if}}
                 </select>
@@ -74,7 +75,8 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default">Create</button>
+          <button type="submit">Create</button>
+          {{!-- <button type="button" class="btn btn-default">Create</button> --}}
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

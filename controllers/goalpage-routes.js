@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const {Categories, Comment, Goal, Member_Goal, Step, User, User_Step} = require('../models');
+const withAuth = require('../utils/auth');
 
 function calculateTime(exam_end_at) {
     const exam_ending_at    = new Date(exam_end_at);
@@ -31,6 +32,7 @@ router.get('/:id', (req, res) => {
                     }
                 ]
             },
+            {model:User}, {model:Member_Goal},
             {
                 model: Comment,
                 attributes: ['id', 'user_id', 'comment', 'created_at'],
@@ -44,8 +46,43 @@ router.get('/:id', (req, res) => {
     }).then(dbGoalData=>{
         const goal = dbGoalData.get({ plain: true});
         let owner = (req.session.user_id === goal.user.id) ? true : false
-        // console.log(owner);
-        res.render('goalspage', {goal: goal, time: calculateTime(goal.due_date), loggedIn: req.session.loggedIn, postOwner: owner });
+        
+        // console.log(req.session.user_id);
+        // if User is logged in:
+        if(req.session.user_id){
+            // Show logged in users infromation using session id:
+            User.findOne({
+                where:{
+                    id:req.session.user_id
+                },
+                include:[{model:Member_Goal}]
+            }).then(dbCurrentUserData =>{
+                const currentUser = dbCurrentUserData.get({ plain: true});
+                // let userGoal = currentUser.member_goals;
+                // let goalId = goal.id;
+                // console.log(goal.id);
+                // If user is a member of the goal:
+                // let checkMember = currentUser.member_goals.some(member => member.goal_id === goal.id);
+                // if(checkMember){
+                //     console.log(currentUser.member_goals)
+                // }
+                // console.log(checkMember);
+                // if(currentUser.member_goals.some(member => member.goal_id === goal.id)){
+                //     console.log(member);
+                // }
+                let member_goal = false;
+                for(let i=0; i<currentUser.member_goals.length; i++){
+                    if(currentUser.member_goals[i].goal_id === goal.id){
+                        member_goal = currentUser.member_goals[i];
+                    }
+                }
+                // console.log(status);
+                res.render('goalspage', {goal: goal, time: calculateTime(goal.due_date), loggedIn: req.session.loggedIn, postOwner: owner, currentUser:currentUser, member_goal:member_goal });
+            })
+        }else{
+            // if user not logged in:
+            res.render('goalspage', {goal: goal, time: calculateTime(goal.due_date), loggedIn: req.session.loggedIn, postOwner: owner });
+        }
     }).catch(err =>{res.status(500).json(err)});
 
 })
