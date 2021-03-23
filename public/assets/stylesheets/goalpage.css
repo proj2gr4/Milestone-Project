@@ -73,7 +73,31 @@ p {
     border: 2px solid rgba(250,250,250,0.1);
 }
 
+.comment-form {
+  margin-bottom: 5%;
+}
+/* ---added from curt for comments---- */
+.comment {
+  padding: 1%;
+  margin-bottom: 1%;
+}
 
+.comment:nth-child(odd) {
+  background-color:rgba(250,250,250,0.1);
+}
+
+.comment .meta {
+  font-size: 90%;
+  margin-bottom: .5%;
+}
+#button-comment {
+  background-color: #f5a425;
+  color: #fff;
+  text-transform: uppercase;
+
+}
+
+/* ---END from curt for comments---- */
 /* Buttons */
 
 .main-button a {

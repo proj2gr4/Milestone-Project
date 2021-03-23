@@ -15,9 +15,7 @@ function calculateTime(exam_end_at) {
     const seconds = totalSeconds - ( totalDays * 24 * 60 * 60 ) - ( hours * 60 * 60 ) - ( minutes * 60 );
     return {totalDays, hours, minutes, seconds}
 }
-        
-        
-        
+               
 router.get('/:id', (req, res) => {
     Goal.findOne({
         where:{
@@ -32,6 +30,14 @@ router.get('/:id', (req, res) => {
                         include:[{model: User}]
                     }
                 ]
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'user_id', 'comment', 'created_at'],
+                include: {
+                  model: User,
+                  attributes: ['username']
+                }
             },
             {model:User}
         ]
