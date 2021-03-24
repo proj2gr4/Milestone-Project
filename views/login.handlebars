@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-6">
  
-
+        {{!-- Login form --}}
           <form class="login-form" id="contact" action="" method="post">
             <div class="row">
               <div class="col-md-6">
@@ -32,7 +32,7 @@
     </div>
   </section>
 
-<!-- Modal -->
+<!-- Sign upModal -->
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
   
@@ -44,27 +44,23 @@
           <h4 class="modal-title">Signup</h4>
         </div>
         <div class="modal-body">
-          <div>
-            <label class="text-uppercase" for="username-signup">username:</label>
-            <input type="text" id="username-signup" />
+          <div class="form-group">
+            <input class="form-control" type="text" id="username-signup" placeholder="User Name"/>
           </div>
-          <div>
-            <label class="text-uppercase" for="email-signup">email:</label>
-            <input type="text" id="email-signup" />
+          <div class="form-group">
+            <input class="form-control" type="text" id="email-signup" placeholder="Email Address"/>
           </div>
-          <div>
-            <label class="text-uppercase" for="password-signup">password:</label>
-            <input type="password" id="password-signup" />
+          <div class="form-group">
+            <input class="form-control" type="password" id="password-signup" placeholder="Password"/>
           </div>
-          <div>
+          <div class="form-group">
             <label for="file" style="cursor: pointer;">Upload Profile Picture</label>
-            <input type="file" name="profimage" id="file" > 
+            <input class="form-control" type="file" name="profimage" id="file"> 
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-default">Sign Up</button>
-          submit
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-default font-weight-bold text-white">Sign Up</button>
+          <button type="button" class="btn btn-default font-weight-bold text-white" data-dismiss="modal">Close</button>
         </div>
       </div>
     </form>

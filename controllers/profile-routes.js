@@ -45,9 +45,7 @@ router.get('/', withAuth, (req, res) => {
                         model:Member_Goal,
                         include:[{model:User}]
                     },
-                    {
-                        model:Categories
-                    }
+                    {model:Categories}
                 ]
             },
             {
@@ -62,9 +60,13 @@ router.get('/', withAuth, (req, res) => {
         ]
     }).then(dbProfileData=>{
         const profile = dbProfileData.get({ plain: true});
-        // console.log(profile.member_goals);
-        // if(profile.goal)
-        res.render('profile', {profile: profile, loggedIn: req.session.loggedIn});
+        // const profile = dbProfileData.map(data => data.get({ plain: true }));
+        Categories.findAll().then(dbCategoriesData =>{
+            const categories = dbCategoriesData.map(data => data.get({ plain: true }));
+
+            // const categories = dbCategoriesData.get({ plain: true});
+            res.render('profile', {profile: profile, categories:categories, loggedIn: req.session.loggedIn, postOwner:true});
+        })
     }).catch(err =>{res.status(500).json(err)});
 
 })
