@@ -1,7 +1,9 @@
 const router = require('express').Router();
+const session = require('express-session');
 const sequelize = require('../config/connection');
 const {Categories, Comment, Goal, Member_Goal, Step, User} = require('../models');
 const withAuth = require('../utils/auth');
+const { Op } = require("sequelize");
 
 router.get('/:id', (req, res) => {
     User.findOne({
@@ -43,6 +45,11 @@ router.get('/', withAuth, (req, res) => {
                 include:[
                     {
                         model:Member_Goal,
+                        // where:{
+                        //     user_id:{
+                        //         [Op.not]: req.session.user_id
+                        //     }
+                        // },
                         include:[{model:User}]
                     },
                     {model:Categories}
@@ -68,6 +75,5 @@ router.get('/', withAuth, (req, res) => {
             res.render('profile', {profile: profile, categories:categories, loggedIn: req.session.loggedIn, postOwner:true});
         })
     }).catch(err =>{res.status(500).json(err)});
-
 })
 module.exports = router;

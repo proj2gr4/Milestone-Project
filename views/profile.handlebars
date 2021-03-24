@@ -58,7 +58,7 @@
                     <p class="text-white">{{goal.description}}</p>
                     {{!-- <p class="text-center text-white"><a class="btn btn-success">Start</a></p> --}}
                     <p class="text-white">'{{goal.title}}' goal belongs to 
-                    <a href="/categories/{{goal.category.id}}"> {{goal.category.category_name}}</a> category and the status is {{goal.Status}} which is due on {{format_dateTwo goal.due_date}}</p>
+                    <a href="/categories/{{goal.category.id}}"> {{goal.category.category_name}}</a> category and the status is '{{goal.status}}' which is due on {{format_dateTwo goal.due_date}}</p>
                     {{!-- <p class="text-white">Due Date: {{format_dateTwo goal.due_date}}</p> --}}
                 </div>
               {{/each}}
@@ -86,31 +86,31 @@
         <section class="section courses">
           <div class="col-md-12">
             <section class="section-heading">
-              <h2>Members participating with you</h2>
+              <h2>Members participating with {{profile.username}}</h2>
               <div class="container">
-                {{#each profile.goals as |goals|}}
-                  <div class="row justify-content-center">
-                    {{#each goals.member_goals as |member_goals|}}
-                      <div class="col-md-3 mb-5">
-                        <div class="product-item">
-                          {{#if member_goals.user.profile_img}}
-                            <a href="#"><img src="/{{member_goals.user.profile_img}}" alt=""></a>
-                          {{else}}
-                            <a href="#"><img src="/images/default-img.jpg" alt=""></a>
-                          {{/if}}
-                          <div class="down-content">
-                            <a href="#"><h4>{{member_goals.user.username}}</h4></a>
-                            <p class="text-white">{{goals.title}}</p>
-                            <p class="text-white">Status: {{goals.status}}</p>
-                            <p class="text-white">Started on: {{format_dateTwo goals.createdAt}}</p>
-                            {{!-- <p class="text-white">Lasted updated on: {{format_dateTwo goals.updatedAt}}</p> --}}
-                            <a class="btn btn-warning" href="/profile/{{member_goals.user.id}}"> View Profile</a>
+                <div class="row justify-content-center">
+                  {{#each profile.goals as |goals|}}
+                      {{#each goals.member_goals as |member_goals|}}
+                        <div class="col-md-3 mb-5">
+                          <div class="product-item">
+                            {{#if member_goals.user.profile_img}}
+                              <a href="#"><img src="/{{member_goals.user.profile_img}}" alt=""></a>
+                            {{else}}
+                              <a href="#"><img src="/images/default-img.jpg" alt=""></a>
+                            {{/if}}
+                            <div class="down-content">
+                              <a href="#"><h4>{{member_goals.user.username}}</h4></a>
+                              <p class="text-white">{{goals.title}}</p>
+                              <p class="text-white">Status: {{member_goals.status}}</p>
+                              <p class="text-white">Starting date: {{format_dateTwo goals.createdAt}}</p>
+                              {{!-- <p class="text-white">Lasted updated on: {{format_dateTwo goals.updatedAt}}</p> --}}
+                              <a class="btn btn-warning" href="/profile/{{member_goals.user.id}}">View Profile</a>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    {{/each}}
-                  </div>
-                {{/each}}
+                      {{/each}}
+                  {{/each}}
+                </div>
               </div>
             </section>
           </div>
