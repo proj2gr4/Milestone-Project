@@ -38,7 +38,7 @@
                                 {{#if member_goal.status}}
                                     <select class="btn btn-success btn-lg form-select form-select-lg" aria-label=".form-select-lg example">
                                         <option selected>{{member_goal.status}}</option>
-                                        <option value="1">Not Started</option>
+                                        <option value="1">Sterted</option>
                                         <option value="2">Completed</option>
                                     </select>
                                     {{!-- Cancel Participation Button: --}}
@@ -57,8 +57,8 @@
                     <div class="row">
                         <div class="col-md-7 col-xs-12">
                         <div class="continer centerIt">
-                            <div>
-                            <h4>Take a <em> BIG step</em></h4>
+                            <div class="mt-5">
+                            <h4>Time<em>Remaining:</em></h4>
                                 <div class="counter">
                                     <div class="days">
                                         <div class="value">{{time.totalDays}}</div>
@@ -67,7 +67,6 @@
 
                                     <div class="hours">
                                         <div class="value">{{time.hours}}</div>
-                                        <div class="value"></div>
                                         <span>Hours</span>
                                     </div>
 
@@ -107,8 +106,8 @@
         <!-- Modal content-->
         <div class="modal-content" enctype="multipart/form-data">
             <div class="modal-header">
-                <h4 class="modal-title">Create a Step</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Create a Step</h4>
             </div>
             <div class="modal-body">
                 <form class="create-step-form">
@@ -118,13 +117,13 @@
                     <div class="form-group">
                         <textarea class="form-control" id="cat-description" rows="3" placeholder="Description"></textarea>
                     </div>
-                    <div >
+                    <div class="form-group">
                         <label for="stepStartDate">Start date</label>
-                        <input type="date" id="stepStartDate" name="stepStartDate" />
+                        <input class="form-control" type="date" id="stepStartDate" name="stepStartDate" />
                     </div> 
-                    <div >
+                    <div class="form-group">
                         <label for="stepDueDate">Due date</label>
-                        <input type="date" id="stepDueDate" name="stepDueDate" />
+                        <input class="form-control" type="date" id="stepDueDate" name="stepDueDate" />
                     </div> 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

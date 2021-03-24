@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="main-button" data-toggle="modal" data-target="#myModal">
-                  <div class="scroll-to-section"><a href="#section2">Create a Goal!</a></div>
+      <div class="scroll-to-section"><a href="#section2">Create a Goal!</a></div>
     </div>
     <div class="owl-theme">
         {{#if goals.length}}
@@ -32,23 +32,24 @@
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg" role="document">
   
     <!-- Modal content-->
     <div class="modal-content" enctype="multipart/form-data">
       <form class="create-goal-form">
         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title">Create a Goal</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-            <div>
-                <label for="goal-title">Title</label>
-                <input name="goal-title" type="text" />
+            <div class="form-group">
+                {{!-- <label for="goal-title">Title</label> --}}
+                <input name="goal-title" type="text" class="form-control" placeholder="Title"/>
             </div>
-            <div>
-                <label for="goal-category">Category</label>
-                <select id="goal-category" name="goal-category">
+            <div class="form-group">
+                {{!-- <label for="goal-category">Category</label> --}}
+                <select id="goal-category" class="form-control form-select" name="goal-category" aria-label="Default select example">
+                    <option selected> Select Category</option>
                     {{#if categories.length}}
                         {{#each categories as |category|}}                        
                             <option value="{{this.id}}">{{this.category_name}}</option>
@@ -56,26 +57,26 @@
                     {{/if}}
                 </select>
             </div>
-            <div>
-                <label for="goal-sub-category">Sub-category</label>
-                <input id="goal-sub-category" name="goal-sub-category" type="text" />
+            <div class="form-group">
+                {{!-- <label for="goal-sub-category">Sub-category</label> --}}
+                <input id="goal-sub-category" name="goal-sub-category" type="text" class="form-control" placeholder="Sub Category"/>
             </div>
              
-            <div>
-                <label for="goal-description">Description</label>
-                <textarea id="goal-description" name="post-content"></textarea>
+            <div class="form-group">
+                {{!-- <label for="goal-description">Description</label> --}}
+                <textarea id="goal-description" name="post-content" class="form-control" rows="3" placeholder="Description"></textarea>
             </div>
-            <div >
+            <div class="form-group">
                 <label for="goalDueDate">Due date</label>
-                <input type="date" id="goalDueDate" name="goalDueDate"  />
+                <input type="date" id="goalDueDate" class="form-control" name="goalDueDate"  />
             </div>
-            <div>
+            <div class="form-group">
                 <label for="file" style="cursor: pointer;">Upload Image</label>
-                <input type="file" name="image" id="file" > 
+                <input class="form-control" type="file" name="image" id="file" > 
             </div>
         </div>
         <div class="modal-footer">
-          <button type="submit">Create</button>
+          <button class="btn btn-primary" type="submit">Create</button>
           {{!-- <button type="button" class="btn btn-default">Create</button> --}}
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
