@@ -30,22 +30,22 @@ router.get('/', (req, res) => {
       ]
     })
       .then(dbGoalData => {
-        // serialize data before passing to template
-        goals = dbGoalData.map(goal => goal.get({ plain: true }));
-       // res.render('dashboard', { goals });
+          // serialize data before passing to template
+          goals = dbGoalData.map(goal => goal.get({ plain: true }));
+        // res.render('dashboard', { goals });
+        Categories.findAll({
+          attributes: [
+            'id',  
+            'category_name'
+          ]
+        })
+        .then(dbCatData => {
+          // serialize data before passing to template
+          const categories = dbCatData.map(category => category.get({ plain: true }));
+          res.render('dashboard', { goals, categories, loggedIn: req.session.loggedIn  });
+        })
       })
 
-      Categories.findAll({
-        attributes: [
-          'id',  
-          'category_name'
-        ]
-      })
-      .then(dbCatData => {
-        // serialize data before passing to template
-        const categories = dbCatData.map(category => category.get({ plain: true }));
-        res.render('dashboard', { goals, categories, loggedIn: req.session.loggedIn  });
-      })
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -81,30 +81,34 @@ router.get('/', (req, res) => {
       ]
     })
       .then(dbGoalData => {
-        // serialize data before passing to template
-        goals = dbGoalData.map(goal => goal.get({ plain: true }));
-        // console.log(goals[0].category.category_name);
-       // res.render('dashboard', { goals });
+          // serialize data before passing to template
+          goals = dbGoalData.map(goal => goal.get({ plain: true }));
+          // console.log(goals[0].category.category_name);
+        // res.render('dashboard', { goals });
+        Categories.findAll({
+          attributes: [
+            'id',  
+            'category_name'
+          ]
+        })
+        
+        .then(dbCatData => {
+          // serialize data before passing to template
+          const categories = dbCatData.map(category => category.get({ plain: true }));
+          // console.log(goals);
+          let categoryPage = goals[0].category.category_name;
+          // .category.cateogry_name; categoryPage[0].category.category_name
+          console.log(categoryPage);
+          res.render('dashboard', { goals, categories, loggedIn: req.session.loggedIn, categoryPage });
+        })
       })
-
-      Categories.findAll({
-        attributes: [
-          'id',  
-          'category_name'
-        ]
-      })
-      .then(dbCatData => {
-        // serialize data before passing to template
-        const categories = dbCatData.map(category => category.get({ plain: true }));
-        // console.log(goals);
-        let categoryPage = goals[0].category.category_name;
-        // .category.cateogry_name; categoryPage[0].category.category_name
-        console.log(categoryPage);
-        res.render('dashboard', { goals, categories, loggedIn: req.session.loggedIn, categoryPage });
-      })
+      
+      
       .catch(err => {
         console.log(err);
+        
         res.status(500).json(err);
+        
       });
   });
 
