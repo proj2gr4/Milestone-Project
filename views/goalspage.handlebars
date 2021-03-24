@@ -7,7 +7,7 @@
                         <div class="container">
                             <div class="col-md-12 text-center">
                                 <div class="section-heading"><h2>{{goal.title}}</h2></div>
-                                <p class="text-center">Created by <a href="/profile/{{goal.user.id}}">{{goal.user.username}}</a></p>
+                                <h2 class="text-center">Created by <a href="/profile/{{goal.user.id}}">{{goal.user.username}}</a></h2>
                                 <div class="description mb-5"><h2>{{goal.description}}</h2></div>
                                 <div class="instructions mb-5">
                                     <div class="section-heading"><h2>Steps to reach the goal</h2></div>
@@ -15,9 +15,9 @@
                                         {{#each goal.steps as |step|}}
                                             <li class="mb-5 bg-dark p-5">
                                                 <h4>{{step.title}}</h4>
-                                                <p>{{step.description}}</p>
-                                                <p>your starting date: {{format_dateTwo step.start_date}} and complete it by {{format_dateTwo step.due_date}}</p>
-                                                <p>
+                                                <h5>{{step.description}}</h5>
+                                                <h6>your starting date: {{format_dateTwo step.start_date}} and complete it by {{format_dateTwo step.due_date}}</h6>
+                                                <h6>
                                                     {{#each step.user_steps as |users|}}
                                                         {{#if users.user.profile.profile_img}}
                                                             <img src="/{{users.user.profile.profile_img}}" class="rounded img-thumbnail" style="max-width:50px" >
@@ -27,7 +27,7 @@
                                                             {{!-- <img src="/{{users.user.profile}}"> --}}
                                                         <a href="/profile/{{users.user.id}}">{{users.user.username}}'s</a> status in this step is: {{users.status}}
                                                     {{/each}}     
-                                                </p>
+                                                </h6>
                                             </li>
                                         {{/each}}
                                     </ul>
@@ -38,7 +38,9 @@
                         </div>
                     </div>
                 </div>
-                <section class="section coming-soon">
+            </div>
+            
+ <section class="section coming-soon">
                     <div class="container">
                     <div class="row">
                         <div class="col-md-7 col-xs-12">
@@ -66,10 +68,12 @@
                         </div>
                     </div>
                 </section>
-            </div>
-    <section class="section coming-soon">
+
+<section class="section coming-soon">
                 <div id="spacer" style="height: 130px;"></div>
+                <br>
                 <h4>Discussion:</h4>
+                
                 {{#if loggedIn}}
                     <form class="comment-form">
                         <div>
