@@ -28,7 +28,7 @@ router.get('/:id', (req, res) =>{
 });
 
 // POST /api/categories
-router.post('/', withAuth, (req, res) =>{
+router.post('/', (req, res) =>{
     Categories.create({
         category_name: req.body.category_name,
         img_url: req.body.img_url
