@@ -1,4 +1,4 @@
- 
+ <link rel="stylesheet" href="../assets/stylesheets/dashboard.css">
  <!-- ***** Dashboard ***** -->
 <section class="section courses">
     
@@ -11,20 +11,24 @@
         </div>
       </div>
     </div>
-    <div class="main-button" data-toggle="modal" data-target="#myModal">
+    <div class="main-button d-flex justify-content-center" data-toggle="modal" data-target="#myModal">
       <div class="scroll-to-section"><a href="#section2">Create a Goal!</a></div>
     </div>
     <div class="owl-theme">
+      {{#if categoryPage}}<h2>{{categoryPage}}</h2>{{/if}}
         {{#if goals.length}}
-            {{#if categoryPage}}<h2>{{categoryPage}}</h2>{{/if}}
-            {{#each goals as |goal|}}
-                <div class="item">
-                    <br>
-                    <div class="down-content">
-                    {{> goal-info goal}}
+        
+          <div class="card-deck container-fluid mt-4" id="team-cards">
+              <div class="row justify-content-center">
+                
+                {{#each goals as |goal|}}
+                    <div class="col-auto mb-3">
+                        {{> goal-info goal}}
                     </div>
-                </div>
-            {{/each}}
+                {{/each}}
+
+              </div>
+          </div>
         {{/if}}
         
     </div>

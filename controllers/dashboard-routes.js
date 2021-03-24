@@ -86,13 +86,14 @@ router.get('/', (req, res) => {
         // console.log(goals[0].category.category_name);
        // res.render('dashboard', { goals });
       })
-
+      
       Categories.findAll({
         attributes: [
           'id',  
           'category_name'
         ]
       })
+      
       .then(dbCatData => {
         // serialize data before passing to template
         const categories = dbCatData.map(category => category.get({ plain: true }));
@@ -104,7 +105,9 @@ router.get('/', (req, res) => {
       })
       .catch(err => {
         console.log(err);
+        
         res.status(500).json(err);
+        
       });
   });
 
