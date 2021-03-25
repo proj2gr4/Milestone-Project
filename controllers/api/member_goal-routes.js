@@ -11,7 +11,7 @@ router.get('/', (req, res) =>{
 });
 
 // Get /api/member_goals/id:
-router.get('/:id', withAuth, (req, res) =>{
+router.get('/:id', (req, res) =>{
     Member_Goal.findOne({where:{id:req.params.id}})
     .then(dbGoalData => res.json(dbGoalData))
     .catch(err =>{res.status(500).json(err)});
@@ -38,7 +38,7 @@ router.delete('/:id', withAuth, (req, res) => {
 });
 
 // Put /api/member_goals/1
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', (req, res) => {
     Member_Goal.update(
         {
             user_id: req.body.user_id,

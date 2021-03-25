@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/stylesheets/goalpage.css">
     <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/stylesheets/homepage.css">
+    {{!-- <link rel="stylesheet" href="assets/stylesheets/homepage.css"> --}}
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
     
@@ -37,13 +37,12 @@
     <nav id="menu" class="main-nav" role="navigation">
       <ul class="main-menu">
         <li><a href="/">Home</a></li>
-        <li><a href="#contactus">Contact Us</a></li>
+        <li><a href="/#contactus">Contact Us</a></li>
         <li><a href="/profile">Profile</a></li>
         <li><a href="/dashboard">Dashboard</a></li>
         
         {{#if loggedIn}}
             <li id="logout"><a href="#">Logout</a></li>
-            {{!-- <button id="logout" class="btn-no-style">logout</button> --}}
         {{else}}
           <li><a href="/login">Login</a></li>
         {{/if}}

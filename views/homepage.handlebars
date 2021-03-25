@@ -130,18 +130,16 @@
 
     <section class="section courses pt-5">
         <div class="container">
+            <h5>Most Recent Goals</h5>
             <div class="row">
-                {{#each users}}
-                    <div class="col-12">
-                        <h5><img class="img-thumbnail rounded" style ="width:50px" src="{{this.profile_img}}"></img> 
-                        <a href="/profile/{{this.id}}">{{this.username}}</a> 
-                        created a new goal: 
-                        {{#each this.goals as |goal|}} 
-                            <a href="/goals/{{goal.id}}">{{goal.title}}</a> 
-                            on {{format_dateTwo goal.createdAt}} in <a href="/categories/{{category_id}}">{{goal.subcategory}}</a>
-                        {{/each}}</h5>
-                    </div>
-                {{/each}}
+              {{#each updatedGoals}}
+                <div class="col-12 my-2 style=""width: 8rem;">
+                  <img class="img-thumbnail rounded" style ="width:50px" src="{{this.user.profile_img}}"></img>
+                  <a href="/profile/{{this.user.id}}"> {{this.user.username}}</a> created a new goal 
+                  <a href="/goals/{{this.id}}">{{this.title}} </a>
+                  on {{format_dateTwo this.createdAt}}
+                </div>
+              {{/each}}
             </div>
         </div>
     </section>

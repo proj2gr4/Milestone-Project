@@ -36,10 +36,13 @@
                                 {{#if postOwner}} <button id="add-category-btn" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addCategoryModal">Add New Step</button> {{/if}}
                                 {{!-- update status: --}}
                                 {{#if member_goal.status}}
-                                    <select class="btn btn-success btn-lg form-select form-select-lg" aria-label=".form-select-lg example">
+                                    <select id="goal_status" onchange="changeStatus({{currentUser.id}}, {{member_goal.id}}, {{goal.id}})" class="btn btn-success btn-lg form-select form-select-lg" aria-label=".form-select-lg">
                                         <option selected>{{member_goal.status}}</option>
-                                        <option value="1">Sterted</option>
-                                        <option value="2">Completed</option>
+                                        <option>Not Started</option>
+                                        {{#each goal.steps as |step|}}
+                                            <option>Started '{{step.title}}'</option>
+                                        {{/each}}
+                                        <option>Completed</option>
                                     </select>
                                     {{!-- Cancel Participation Button: --}}
                                     <button id="cancelParticpateBtn" class="btn btn-danger btn-lg" memberGoalsId = "{{member_goal.id}}">Cancel Participation</button>
@@ -81,6 +84,19 @@
                     </div>
                 </section>
             </div>
+    {{!-- Members updates: --}}
+    <section class="section courses">
+        <div class="container">
+            <div class="row">
+                {{#each goal.member_goals as |goals|}}
+                <div class="col-sm-12">
+                    <a href="/profile/{{goals.user.id}}"><img src="/{{goals.user.profile_img}}" style="max-width: 40px;"> {{goals.user.username}}</a>
+                     {{goals.status}} at {{format_dateTwo goals.updatedAt}}
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
     <section class="section coming-soon">
                 <div id="spacer" style="height: 130px;"></div>
                 <h4>Discussion:</h4>

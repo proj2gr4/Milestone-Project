@@ -45,7 +45,18 @@ router.post('/', withAuth, (req, res) =>{
         due_date: req.body.dueDate,
         status: req.body.status
     })
-    .then(dbGoalData => res.json(dbGoalData))
+    .then(
+        dbGoalData => {
+            const goalData = dbGoalData.get({ plain: true});
+            console.log(goalData);
+            Member_Goal.create({
+                user_id: goalData.user_id,
+                goal_id: goalData.id,
+                status: 'Not Started'
+            })
+            .then(dbGoalMemberData => res.json(dbGoalMemberData));
+            res.json(goalData)
+    })
     .catch(err =>{res.status(500).json(err)});
 });
 

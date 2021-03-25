@@ -75,7 +75,9 @@ p {
     display: inline-block;
     outline: none;
 }
-
+select#goal_status option:first-child{
+  display: none;
+}
 a.menu-link { display: none; }
 
 @media screen and (max-width: 950px) {
