@@ -52,10 +52,24 @@
                     </div>
                     
                 </div>
-                {{!-- add new category button (if owner of the post) --}}
-                {{#if postOwner}} <button id="add-category-btn" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addCategoryModal">Add New Step</button> {{/if}}
-                {{!-- update status: --}}
+                {{!-- (if owner of the post) --}}
+                {{#if postOwner}} 
+                    {{!-- add new category button --}}
+                    <button id="add-category-btn" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addCategoryModal">Add New Step</button> 
+                    {{!-- Delete Goal: --}}
+                    <button id="delete-goal-btn" type="button" class="btn btn-danger btn-lg" onclick="deleteGoal({{goal.id}})">Delete This Goal</button> 
+                    {{!-- <button id="delete-steps-btn" type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#deleteStepModal">Delete Step</button>  --}}
+                    {{!-- <select id="delete_step" onchange="deleteStep({{currentUser.id}}, {{member_goal.id}}, {{goal.id}})" class="btn btn-success btn-lg form-select form-select-lg" aria-label=".form-select-lg">
+                        <option selected>{{member_goal.status}}</option>
+                        <option>Not Started</option>
+                        {{#each goal.steps as |step|}}
+                            <option>Started '{{step.title}}'</option>
+                        {{/each}}
+                        <option>Completed</option>
+                    </select> --}}
+                {{/if}}
                 {{#if member_goal.status}}
+                    {{!-- update status: --}}
                     <select id="goal_status" onchange="changeStatus({{currentUser.id}}, {{member_goal.id}}, {{goal.id}})" class="btn btn-success btn-lg form-select form-select-lg" aria-label=".form-select-lg">
                         <option selected>{{member_goal.status}}</option>
                         <option>Not Started</option>

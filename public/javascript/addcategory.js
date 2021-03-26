@@ -26,5 +26,19 @@ async function categoryCreateFormHandler(event) {
         }
     }
 }
+ async function deleteGoal(id){
+    //  alert (id);
+    const goalId = id;
+    const response = await fetch(`/api/goals/${goalId}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if (response.ok) {
+        // location.reload();
+        location.replace("/profile");
+    } else {
+        alert(response.statusText);
+    }
+}
 
 document.querySelector('#addCategoryModal').addEventListener('submit', categoryCreateFormHandler);
