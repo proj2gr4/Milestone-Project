@@ -1,4 +1,4 @@
-@import url(fontawesome.css);
+/* @import url(fontawesome.css); */
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -293,7 +293,7 @@ a.menu-link { display: none; }
 /* Posts */
 
 section.courses {
-    background-image: url(images/img5.jpg);
+    /* background-image: url(images/img5.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     /* background-color: #202f49; */
