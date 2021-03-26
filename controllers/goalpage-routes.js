@@ -35,9 +35,9 @@ router.get('/:id', (req, res) => {
             {model:User}, 
             {
                 model: Member_Goal,
-                include:[{ model: User}]
-                // limit: 10, 
-                // order: [['updated_at', 'DESC']]
+                include:[{ model: User}],
+                limit: 5, 
+                order: [['updated_at', 'DESC']]
             },
             {
                 model: Comment,
@@ -52,8 +52,6 @@ router.get('/:id', (req, res) => {
     }).then(dbGoalData=>{
         const goal = dbGoalData.get({ plain: true});
         let owner = (req.session.user_id === goal.user.id) ? true : false
-        
-        // console.log(req.session.user_id);
         // if User is logged in:
         if(req.session.user_id){
             // Show logged in users infromation using session id:
@@ -70,7 +68,6 @@ router.get('/:id', (req, res) => {
                         member_goal = currentUser.member_goals[i];
                     }
                 }
-                // console.log(goal);
                 res.render('goalspage', {goal: goal, time: calculateTime(goal.due_date), loggedIn: req.session.loggedIn, postOwner: owner, currentUser:currentUser, member_goal:member_goal });
             })
         }else{

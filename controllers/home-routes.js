@@ -6,19 +6,6 @@ router.get('/', (req, res) => {
     Categories.findAll()
     .then(dbCategoriesData => {
         let categories = dbCategoriesData.map(cat => cat.get({ plain: true }));
-        // User.findAll({
-        //     include: [
-        //         {
-        //             model: Goal,
-        //             include:[
-        //                 {model: Categories}
-        //             ]
-        //         },
-        //         {
-        //             model: Comment
-        //         }
-        //     ]
-        // })
         Goal.findAll({
             include:[{model:User}],
             limit: 10, 
