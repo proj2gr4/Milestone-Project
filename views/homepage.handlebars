@@ -118,7 +118,7 @@
         <div class="col-md-12">
           <div class="section-heading">
             <div class="main-button">
-              <div class="scroll-to-section"><a href="/dashboard">View Goals</a></div>
+              <div class="scroll-to-section"><a href="/dashboard"><i class="bi bi-bullseye"></i> View Goals</a></div>
           </div>
           </div>
         </div>
@@ -134,10 +134,10 @@
             <div class="row">
               {{#each updatedGoals}}
                 <div class="col-12 my-2">
-                  <img class="img-thumbnail rounded" style ="width:50px" src="{{this.user.profile_img}}"></img>
-                  <a href="/profile/{{this.user.id}}"> {{this.user.username}}</a> created a new goal 
-                  <a href="/goals/{{this.id}}">{{this.title}} </a>
-                  on {{format_dateTwo this.createdAt}}
+                    <img class="img-thumbnail rounded" style ="width:50px" src="{{this.user.profile_img}}"></img>
+                    <a href="/profile/{{this.user.id}}"> {{this.user.username}}</a> created a new goal 
+                    <a href="/goals/{{this.id}}">{{this.title}} </a>
+                    on {{format_dateTwo this.createdAt}}
                 </div>
               {{/each}}
             </div>
@@ -155,7 +155,7 @@
         </div>
       </div>
       <div class="row justify-content-md-center">
-        <div class="col-md-6">
+        <div class="col-md-8">
           <form id="contact" action="" method="post">
             <div class="row">
               <div class="col-md-6">
@@ -175,7 +175,7 @@
               </div>
               <div class="col-md-12">
                 <fieldset>
-                  <button type="submit" id="form-submit" class="button">Send Message Now</button>
+                  <button type="submit" id="form-submit" class="button"><i class="bi bi-chat-square-text"></i> Send Message Now</button>
                 </fieldset>
               </div>
             </div>
@@ -184,12 +184,3 @@
       </div>
     </div>
   </section>
-  <footer class="text-muted p-5">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
-        <p>Group Project © Group-4 UoT Bootcamp</p>
-        <p>Thanks for visiting <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
-      </div>
-    </footer>

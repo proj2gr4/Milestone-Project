@@ -1,4 +1,4 @@
-@import url(fontawesome.css);
+/* @import url(fontawesome.css); */
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -485,7 +485,7 @@ section.features .col-4 {
 
 /* Introduction */
 section.why-us {
-  background-image: url(../images/choosing-bg.jpg);
+  /* background-image: url(../images/choosing-bg.jpg); */
   background-color: #172238;
   background-repeat: no-repeat;
   background-size: cover;
@@ -617,7 +617,7 @@ border-color: #f5a425;
 /* Courses */
 
 section.courses {
-    background-image: url(images/img5.jpg);
+    /* background-image: url(images/img5.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #172238;
@@ -705,7 +705,7 @@ section.courses .owl-carousel button.active {
 /* Video */
 
 section.video {
-    background-image: url(../images/video-bg.jpg);
+    /* background-image: url(../images/video-bg.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #172238;
@@ -1265,7 +1265,7 @@ img.mfp-img {
 /* Contact */
 
 section.contact {
-    background-image: url(images/img5.jpg);
+    /* background-image: url(images/img5.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #172238;
