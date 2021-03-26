@@ -1,33 +1,52 @@
  <link rel="stylesheet" href="../assets/stylesheets/dashboard.css">
  <!-- ***** Dashboard ***** -->
 <section class="section courses">
-    
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
           <div class="section-heading">
                 <h2>Welcome to Milestone</h2>
+                <div class="main-button d-flex justify-content-center" data-toggle="modal" data-target="#myModal">
+                  <div class="scroll-to-section"><a href="#">Create a Goal!</a></div>
+                </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="main-button d-flex justify-content-center" data-toggle="modal" data-target="#myModal">
-      <div class="scroll-to-section"><a href="#section2">Create a Goal!</a></div>
-    </div>
-    <div class="owl-theme">
-      {{#if categoryPage}}<h2>{{categoryPage}}</h2>{{/if}}
-        {{#if goals.length}}
-        
-          <div class="card-deck container-fluid mt-4" id="team-cards">
-              <div class="row justify-content-center">
-                
-                {{#each goals as |goal|}}
-                    <div class="col-auto mb-3">
-                        {{> goal-info goal}}
-                    </div>
-                {{/each}}
-
+    <div class="owl-theme section-heading">
+        <h2 class="mt-4">Or Choose a goal</h2>
+        <div class="container">
+          <div class="row justify-content-center">
+            {{#each categories}}
+              <div class="main-button d-flex justify-content-center">
+                <a href="/dashboard/{{id}}">
+                  <img class="img-fluid" style="max-width: 100px;" src="{{img_url}}">
+                  {{category_name}}
+                </a>
               </div>
+            {{/each}}
+          </div>
+        </div>
+        {{#if goals.length}}
+          <div class="row justify-content-center section-heading">
+            {{#each goals as |goal|}}
+              <div class="m-3 p-3 bg-dark col-md-3 rounded-0">
+                <div class="card-header bg-transparent">
+                    <a href="/goals/{{id}}"><h4>{{title}}</h4></a>
+                    <p class="mb-0"><i class="bi bi-tag"></i><a class="text-white" href="/dashboard/{{category.id}}">{{category.category_name}}</a></p>
+                </div>
+                <div class="card-body bg-transparent">
+                    <div class="card-text">{{description}}</div>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <div class="card-text">
+                      <i class="bi bi-person-circle"></i> <b class="text-warning">{{member_goals.length}}</b> {{format_plural "member" member_goals.length}} participating
+                    </div>
+                    <div class="card-text"><small>Complete it by <i class="text-warning"> {{format_dateTwo due_date}}</i></small></div>
+
+                </div>
+            </div>
+            {{/each}}
           </div>
         {{/if}}
         

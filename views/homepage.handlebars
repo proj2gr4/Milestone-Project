@@ -15,8 +15,6 @@
       </div>
   </section>
   <!-- ***** Main Banner Area End ***** -->
-
-
   <section class="features">
     <div class="container">
       <div class="row">
@@ -40,15 +38,15 @@
       <div class="row">
         <div class="col-md-12">
           <div class="section-heading">
-            <h2>Moving Forward and Staying Strong</h2>
+            <h2 class="mt-5">Moving Forward and Staying Strong</h2>
           </div>
         </div>
         <div class="col-md-12">
           <div id='tabs'>
             <ul>
-              <li><a href='#tabs-1'>Commit to be fit</a></li>
-              <li><a href='#tabs-2'>Learning Excellence</a></li>
-              <li><a href='#tabs-3'>Health Awareness</a></li>
+              <li><i class="bi bi-bicycle"></i><a href='#tabs-1'>Commit to be fit</a></li>
+              <li><i class="bi bi-binoculars"></i><a href='#tabs-2'>Learning Excellence</a></li>
+              <li><i class="bi bi-emoji-laughing"></i><a href='#tabs-3'>Health Awareness</a></li>
             </ul>
             <section class='tabs-content'>
               <article id='tabs-1'>
@@ -114,13 +112,13 @@
     </div>
   </section>
 
-  <section class="section courses" data-section="section4">
+  <section class="section courses p-0" data-section="section4">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
           <div class="section-heading">
             <div class="main-button">
-              <div class="scroll-to-section"><a href="/dashboard">View Dashboard</a></div>
+              <div class="scroll-to-section"><a href="/dashboard"><i class="bi bi-bullseye"></i> View Goals</a></div>
           </div>
           </div>
         </div>
@@ -128,34 +126,36 @@
         </div>
   </section>
 
-    <section class="section courses pt-5">
+    <section class="section courses p-0">
         <div class="container">
+          <section class="section-heading m-0">
+            <h2 class="mt-5">Most Recent Goals</h2>
+          </section>
             <div class="row">
-                {{#each users}}
-                    <div class="col-12">
-                        <h5><img class="img-thumbnail rounded" style ="width:50px" src="{{this.profile_img}}"></img> 
-                        <a href="/profile/{{this.id}}">{{this.username}}</a> 
-                        created a new goal: 
-                        {{#each this.goals as |goal|}} 
-                            <a href="/goals/{{goal.id}}">{{goal.title}}</a> 
-                            on {{format_dateTwo goal.createdAt}} in <a href="/categories/{{category_id}}">{{goal.subcategory}}</a>
-                        {{/each}}</h5>
-                    </div>
-                {{/each}}
+              {{#each updatedGoals}}
+                <div class="col-12 my-2">
+                    <img class="img-thumbnail rounded" style ="width:50px" src="{{this.user.profile_img}}"></img>
+                    <a href="/profile/{{this.user.id}}"> {{this.user.username}}</a> created a new goal 
+                    <a href="/goals/{{this.id}}">{{this.title}} </a>
+                    on {{format_dateTwo this.createdAt}}
+                </div>
+              {{/each}}
             </div>
         </div>
     </section>
 
 
-  <section class="section contact" data-section="section6" id="contactus">
+  <section class="section contact m-0" data-section="section6" id="contactus">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="section-heading">
+          <div class="section-heading m-0">
             <h2>Let’s Keep In Touch</h2>
           </div>
         </div>
-        <div class="col-md-6">
+      </div>
+      <div class="row justify-content-md-center">
+        <div class="col-md-8">
           <form id="contact" action="" method="post">
             <div class="row">
               <div class="col-md-6">
@@ -175,7 +175,7 @@
               </div>
               <div class="col-md-12">
                 <fieldset>
-                  <button type="submit" id="form-submit" class="button">Send Message Now</button>
+                  <button type="submit" id="form-submit" class="button"><i class="bi bi-chat-square-text"></i> Send Message Now</button>
                 </fieldset>
               </div>
             </div>

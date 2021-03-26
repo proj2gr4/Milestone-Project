@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <section class="section-heading">
+        <section class="section-heading mb-0">
           <h2>Welcome to <b>{{profile.username}}'s</b> profile page</h2>
           <div class="container">
             <section class="profileinfo row p-5">
@@ -65,7 +65,7 @@
             </div>
 
             {{!-- Goals Participating in: --}}
-            <h2>Goals {{profile.username}} Participating</h2>
+            <h2 class="mt-5">Goals {{profile.username}} Participating</h2>
             <div class="row justify-content-center">
               {{#each profile.member_goals as |goals|}}
                 <div class="col-12 col-md-4 p-5 mt-3 text-white">
@@ -85,26 +85,28 @@
         <!-- Friend Status -->
         <section class="section courses">
           <div class="col-md-12">
-            <section class="section-heading">
-              <h2>Members participating with {{profile.username}}</h2>
-              <div class="container">
+            <section class="section-heading mt-0">
+              <h2 class="mt-5">Other members participating with {{profile.username}}</h2>
+              <div class="">
                 <div class="row justify-content-center">
+
                   {{#each profile.goals as |goals|}}
                       {{#each goals.member_goals as |member_goals|}}
-                        <div class="col-md-3 mb-5">
-                          <div class="product-item">
-                            {{#if member_goals.user.profile_img}}
-                              <a href="#"><img src="/{{member_goals.user.profile_img}}" alt=""></a>
-                            {{else}}
-                              <a href="#"><img src="/images/default-img.jpg" alt=""></a>
-                            {{/if}}
-                            <div class="down-content">
-                              <a href="#"><h4>{{member_goals.user.username}}</h4></a>
-                              <p class="text-white">{{goals.title}}</p>
-                              <p class="text-white">Status: {{member_goals.status}}</p>
-                              <p class="text-white">Starting date: {{format_dateTwo goals.createdAt}}</p>
-                              {{!-- <p class="text-white">Lasted updated on: {{format_dateTwo goals.updatedAt}}</p> --}}
-                              <a class="btn btn-warning" href="/profile/{{member_goals.user.id}}">View Profile</a>
+                        <div class="card m-3 p-3 bg-dark col-md-3 rounded-0">
+                          <div class="row g-0">
+                            <div class="col-md-4 align-self-center">
+                              {{#if member_goals.user.profile_img}}
+                                <a href="/profile/{{member_goals.user.id}}"><img src="/{{member_goals.user.profile_img}}" class="img-fluid" alt=""></a>
+                              {{else}}
+                                <a href="/profile/{{member_goals.user.id}}"><img src="/images/default-img.jpg" class="img-fluid" alt=""></a>
+                              {{/if}}
+                            </div>
+                            <div class="col-md-8">
+                              <div class="card-body p-0">
+                                <p class="card-title mt-1">{{member_goals.user.username}}</p>
+                                <h6 class="card-text">{{member_goals.status}}</h6> <p> to achieve <a href="/goals/{{goals.id}}">'{{goals.title}}'</a></p>
+                                <p class="card-text"><small class="text-muted">Last updated {{format_dateTwo member_goals.updatedAt}}</small></p>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -124,7 +126,6 @@
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
-  
     <!-- Modal content-->
     <div class="modal-content" enctype="multipart/form-data">
       <form class="create-goal-form">

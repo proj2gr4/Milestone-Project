@@ -1,4 +1,4 @@
-@import url(fontawesome.css);
+/* @import url(fontawesome.css); */
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -23,9 +23,8 @@ ul {
 }
 
 p {
-  color:black;
-    font-size: 13px;
-    line-height: 22px;
+  font-size: 13px;
+  line-height: 22px;
 }
 
 .logo {
@@ -294,10 +293,10 @@ a.menu-link { display: none; }
 /* Posts */
 
 section.courses {
-    background-image: url(images/img5.jpg);
+    /* background-image: url(images/img5.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: #202f49;
+    /* background-color: #202f49; */
     padding-bottom: 100px;
     padding: 0px 30px 100px 30px;
 }
