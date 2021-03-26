@@ -6,29 +6,20 @@ router.get('/', (req, res) => {
     Categories.findAll()
     .then(dbCategoriesData => {
         let categories = dbCategoriesData.map(cat => cat.get({ plain: true }));
-            
-        User.findAll({
-            // limit : 15,
-            // order: [
-            //     // Will escape full_name and validate DESC against a list of valid direction parameters
-            //     ['id', 'DESC']
-            // ],
-            include: [
-                {
-                    model: Goal,
-                    include:[
-                        {model: Categories}
-                    ]
-                },
-                {
-                    model: Comment
-                }
-            ]
+        Goal.findAll({
+            include:[{model:User}],
+            limit: 10, 
+            order: [['updatedAt', 'DESC']]
         })
         .then(dbUserData => {
-            const users = dbUserData.map(data => data.get({ plain: true }));
-            // console.log(users);
-            res.render('homepage', { users: users, categories: categories, loggedIn: req.session.loggedIn });
+            const goals = dbUserData.map(data => data.get({ plain: true }));
+            // update profile image if empty:
+            const updatedGoals = goals.map(item => {
+                item.user.profile_img = item.user.profile_img === null ? '/images/default-img.jpg' : item.user.profile_img;
+                return item;
+            });
+            // console.log(updatedGoals, goals);
+            res.render('homepage', { updatedGoals, categories, loggedIn: req.session.loggedIn });
         })
         
     })

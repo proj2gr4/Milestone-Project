@@ -7,19 +7,6 @@ async function categoryCreateFormHandler(event) {
     const start_date = document.querySelector('#stepStartDate').value;
     const due_date = document.querySelector('#stepDueDate').value;
     
-    // console.log(req.params.id);
-    // console.log(title, description, start_date, due_date, goal_id);
-
-//   // Creating a new form data obj and appending with user datas
-//     const formData = new FormData();
-//     formData.append("title", title);
-//     formData.append("description", description);
-//     formData.append("category_id", category);
-//     formData.append("subcategory", subcategory);
-//     formData.append("due_date", dueDate);
-    
-//     //formData.append("pr", profile_img.files[0]);
-    
     if (title && description && start_date && due_date && goal_id) {
         const response = await fetch('/api/steps', {
             method: 'post',

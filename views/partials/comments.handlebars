@@ -2,6 +2,7 @@
   {{#each this}}
   <section class="comment">
     <div class="meta">
+      <img class="img-thumbnail rounded" style ="width:50px" src="../{{user.profile_img}}"></img>
       {{user.username}} </br>on {{format_dateTwo created_at}}
     <div class="text">
       {{comment}}

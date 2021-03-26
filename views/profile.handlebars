@@ -3,36 +3,53 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <section class="section-heading">
-          <h2>Hello {{profile.username}} Welcome to your profile page</h2>
+        <section class="section-heading mb-0">
+          <h2>Welcome to <b>{{profile.username}}'s</b> profile page</h2>
           <div class="container">
             <section class="profileinfo row p-5">
               <div class="col-md-6 .img-thumbnail">
                 {{#if profile.profile_img}}
-                <img src="/{{profile.profile_img}}" class="rounded img-thumbnail" style="max-width:200px" >
+                  <img src="/{{profile.profile_img}}" class="rounded img-thumbnail" style="max-width:250px" >
                 {{else}}
-                <img src="/images/default-img.jpg" class="rounded img-thumbnail" style="max-width:200px" >
+                  <img src="/images/default-img.jpg" class="rounded img-thumbnail" style="max-width:250px" >
                 {{/if}}
               </div>
               <div class="col-md-6">
                 <div class="product-item1">
                   <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>
                   <div class="down-content1">
-                    <h5 class="text-white" >Your Email: {{profile.email}}</h3>
-                    <div class="scroll-to-section"><a href="#">View your posts</a></div>
-                    <div class="scroll-to-section"><a href="#">View your comments</a></div>
+                    <h4 class="text-white" >{{profile.username}}'s email address: {{profile.email}}</h4>
+                    <div class="scroll-to-section"><a href="#">View posts</a></div>
+                    <div class="scroll-to-section"><a href="#">View comments</a></div>
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                          <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                          <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                          <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                        </svg>
                     </ul>
 
-                    <div class="scroll-to-section"><a href="dashboard.html">View Dashboard</a></div>
+                    <div class="scroll-to-section"><a href="/dashboard">View Dashboard</a></div>
                   </div>
                 </div>
               </div>
             </section>
 
-            {{!-- Goals: --}}
-            <h2>Goals you created: </h2>
+            {{!-- add new category button (if owner of the post) --}}
+            {{#if postOwner}} 
+              {{!-- <div class="row justify-content-md-center"><button id="create-goal-form" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addCategoryModal">Add New Goal</button></div>  --}}
+                <div class="main-button" data-toggle="modal" data-target="#myModal">
+                    <div class="scroll-to-section"><a href="#">Create a Goal!</a></div>
+                </div>
+            {{/if}}
+
+            {{!-- Goals created: --}}
+            <h2>Goals {{profile.username}} Created: </h2>
             <div class="row justify-content-center">
               {{#each profile.goals as |goal|}}
                 <div class="col-12 col-md-4 p-5 mt-3 text-white">
@@ -41,7 +58,23 @@
                     <p class="text-white">{{goal.description}}</p>
                     {{!-- <p class="text-center text-white"><a class="btn btn-success">Start</a></p> --}}
                     <p class="text-white">'{{goal.title}}' goal belongs to 
-                    <a href="/categories/{{goal.category.id}}"> {{goal.category.category_name}}</a> category and the status is {{goal.Status}} which is due on {{format_dateTwo goal.due_date}}</p>
+                    <a href="/categories/{{goal.category.id}}"> {{goal.category.category_name}}</a> category and the status is '{{goal.status}}' which is due on {{format_dateTwo goal.due_date}}</p>
+                    {{!-- <p class="text-white">Due Date: {{format_dateTwo goal.due_date}}</p> --}}
+                </div>
+              {{/each}}
+            </div>
+
+            {{!-- Goals Participating in: --}}
+            <h2 class="mt-5">Goals {{profile.username}} Participating</h2>
+            <div class="row justify-content-center">
+              {{#each profile.member_goals as |goals|}}
+                <div class="col-12 col-md-4 p-5 mt-3 text-white">
+                    <a href="/goals/{{goals.goal.id}}"><img src="{{goals.goal.category.img_url}}" class="rounded-circle img-fluid border"></a>
+                    <h2 class="h5 text-center mt-3 mb-3">{{goals.goal.title}}</h2>
+                    <p class="text-white">{{goals.goal.description}}</p>
+                    {{!-- <p class="text-center text-white"><a class="btn btn-success">Start</a></p> --}}
+                    <p class="text-white">'{{goals.goal.title}}' goal belongs to 
+                    <a href="/categories/{{goals.goal.category.id}}"> {{goals.goal.category.category_name}}</a> category and the status is {{goals.goal.Status}} which is due on {{format_dateTwo goals.goal.due_date}}</p>
                     {{!-- <p class="text-white">Due Date: {{format_dateTwo goal.due_date}}</p> --}}
                 </div>
               {{/each}}
@@ -52,33 +85,34 @@
         <!-- Friend Status -->
         <section class="section courses">
           <div class="col-md-12">
-            <section class="section-heading">
-              <h2>Members participating with you</h2>
-              <div class="container">
-                {{#each profile.goals as |goals|}}
-                  <div class="row justify-content-center">
-                    {{#each goals.member_goals as |member_goals|}}
-                      <div class="col-md-3 mb-5">
-                        <div class="product-item">
-                          {{#if member_goals.user.profile_img}}
-                            <a href="#"><img src="/{{member_goals.user.profile_img}}" alt=""></a>
-                          {{else}}
-                            <a href="#"><img src="/images/default-img.jpg" alt=""></a>
-                          {{/if}}
-                          <div class="down-content">
-                            <a href="#"><h4>{{member_goals.user.username}}</h4></a>
-                            <p class="text-white">{{goals.title}}</p>
-                            <p class="text-white">Status: {{goals.status}}</p>
-                            <p class="text-white">Started on: {{format_dateTwo goals.createdAt}}</p>
-                            {{!-- <p class="text-white">Lasted updated on: {{format_dateTwo goals.updatedAt}}</p> --}}
+            <section class="section-heading mt-0">
+              <h2 class="mt-5">Other members participating with {{profile.username}}</h2>
+              <div class="">
+                <div class="row justify-content-center">
 
-                            <span p class="btn btn-success">Join in</span>
+                  {{#each profile.goals as |goals|}}
+                      {{#each goals.member_goals as |member_goals|}}
+                        <div class="card m-3 p-3 bg-dark col-md-3 rounded-0">
+                          <div class="row g-0">
+                            <div class="col-md-4 align-self-center">
+                              {{#if member_goals.user.profile_img}}
+                                <a href="/profile/{{member_goals.user.id}}"><img src="/{{member_goals.user.profile_img}}" class="img-fluid" alt=""></a>
+                              {{else}}
+                                <a href="/profile/{{member_goals.user.id}}"><img src="/images/default-img.jpg" class="img-fluid" alt=""></a>
+                              {{/if}}
+                            </div>
+                            <div class="col-md-8">
+                              <div class="card-body p-0">
+                                <p class="card-title mt-1">{{member_goals.user.username}}</p>
+                                <h6 class="card-text">{{member_goals.status}}</h6> <p> to achieve <a href="/goals/{{goals.id}}">'{{goals.title}}'</a></p>
+                                <p class="card-text"><small class="text-muted">Last updated {{format_dateTwo member_goals.updatedAt}}</small></p>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    {{/each}}
-                  </div>
-                {{/each}}
+                      {{/each}}
+                  {{/each}}
+                </div>
               </div>
             </section>
           </div>
@@ -89,6 +123,57 @@
     </div>
   </div>
 </section>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <!-- Modal content-->
+    <div class="modal-content" enctype="multipart/form-data">
+      <form class="create-goal-form">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Create a Goal</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <input name="goal-title" type="text" class="form-control" placeholder="Title"/>
+            </div>
+            <div class="form-group">
+                <select id="goal-category" class="form-control form-select" name="goal-category" aria-label="Default select example">
+                    <option selected> Select Category</option>
+                    {{#if categories.length}}
+                        {{#each categories as |category|}}                        
+                            <option value="{{this.id}}">{{this.category_name}}</option>
+                        {{/each}}
+                    {{/if}}
+                </select>
+            </div>
+            <div class="form-group">
+                <input id="goal-sub-category" name="goal-sub-category" type="text" class="form-control" placeholder="Sub Category"/>
+            </div>
+             
+            <div class="form-group">
+                <textarea id="goal-description" name="post-content" class="form-control" rows="3" placeholder="Description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="goalDueDate">Due date</label>
+                <input type="date" id="goalDueDate" class="form-control" name="goalDueDate"  />
+            </div>
+            <div class="form-group">
+                <label for="file" style="cursor: pointer;">Upload Image</label>
+                <input class="form-control" type="file" name="image" id="file" > 
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="submit">Create</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+    {{!-- import dashboard.js to create goal --}}
+    <script src="/javascript/dashboard.js"></script>
     <!-- Bootstrap core JavaScript -->
     <script src="/vendor/FriendStatus/jquery/jquery.min.js"></script>
     <script src="/vendor/FriendStatus/bootstrap/js/bootstrap.bundle.min.js"></script>

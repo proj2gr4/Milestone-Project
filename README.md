@@ -29,7 +29,7 @@ The application functionality:
 - Three categories with different goals, with different steps, and a star will be shown once the user completed a milestone.
 
 ## Usage
-[Milestone](https://milestone-goals.herokuapp.com)
+[Milestone Website](https://milestone-goals.herokuapp.com)
 
 ## Credits
 
@@ -38,7 +38,7 @@ The application functionality:
 - Creately
 - Bootstrap
 - Jquery
-- [Background Video](https://www.youtube.com/watch?v=TFO9hBtLVec&t=14s) 
+- Youtube [Website Background](https://www.youtube.com/watch?v=TFO9hBtLVec&t=14s)
 
 ## Questions
 

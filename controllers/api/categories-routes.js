@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const {Categories, Comment, Goal, Member_Goal, Step, User} = require('../../models');
+const withAuth = require('../../utils/auth');
+
 
 // GET /api/categories
 router.get('/', (req, res) =>{
@@ -36,7 +38,7 @@ router.post('/', (req, res) =>{
 });
 
 // Delete /api/categories/:id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Categories.destroy({
         where:{id: req.params.id}
     })

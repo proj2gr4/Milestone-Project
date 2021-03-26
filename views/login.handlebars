@@ -1,7 +1,7 @@
 <!-- ***** Login Form ***** -->
 <section class="section contact" data-section="loginpage" id="login">
     <div class="container">
-      <div class="row">
+      <div class="row justify-content-md-center">
         <div class="col-md-12">
           <div class="section-heading">
             <h2>Welcome to Milestone</h2>
@@ -9,20 +9,20 @@
         </div>
         <div class="col-md-6">
  
-
+        {{!-- Login form --}}
           <form class="login-form" id="contact" action="" method="post">
             <div class="row">
               <div class="col-md-6">
                   <fieldset>
                     <input name="username" id="username-login" type="text" class="form-control" placeholder="Username">
                   </fieldset>
-                  <div class="d-flex justify-content-center"><button type="submit" id="form-login">Log In</button></div>
+                  <div class="d-flex justify-content-center"><button type="submit" id="form-login"><i class="bi bi-box-arrow-in-right"></i> Log In</button></div>
                 </div>
                 <div class="col-md-6">
                   <fieldset>
                     <input id="password-login" name="password" type="password" class="form-control" placeholder="Password">
                   </fieldset>
-                  <div class="d-flex justify-content-center"><button type="button" data-toggle="modal" data-target="#myModal">Sign Up Now !</button></div>
+                  <div class="d-flex justify-content-center"><button type="button" data-toggle="modal" data-target="#myModal"><i class="bi bi-person-lines-fill"></i> Sign Up Now !</button></div>
                 </div>
               </div>
             </div>
@@ -32,7 +32,7 @@
     </div>
   </section>
 
-<!-- Modal -->
+<!-- Sign upModal -->
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
   
@@ -44,26 +44,23 @@
           <h4 class="modal-title">Signup</h4>
         </div>
         <div class="modal-body">
-          <div>
-            <label class="text-uppercase" for="username-signup">username:</label>
-            <input type="text" id="username-signup" />
+          <div class="form-group">
+            <input class="form-control" type="text" id="username-signup" placeholder="User Name"/>
           </div>
-          <div>
-            <label class="text-uppercase" for="email-signup">email:</label>
-            <input type="text" id="email-signup" />
+          <div class="form-group">
+            <input class="form-control" type="text" id="email-signup" placeholder="Email Address"/>
           </div>
-          <div>
-            <label class="text-uppercase" for="password-signup">password:</label>
-            <input type="password" id="password-signup" />
+          <div class="form-group">
+            <input class="form-control" type="password" id="password-signup" placeholder="Password"/>
           </div>
-          <div>
+          <div class="form-group">
             <label for="file" style="cursor: pointer;">Upload Profile Picture</label>
-            <input type="file" name="profimage" id="file" > 
+            <input class="form-control" type="file" name="profimage" id="file"> 
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default">Sign Up</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-default font-weight-bold text-white">Sign Up</button>
+          <button type="button" class="btn btn-default font-weight-bold text-white" data-dismiss="modal">Close</button>
         </div>
       </div>
     </form>
