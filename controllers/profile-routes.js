@@ -31,14 +31,26 @@ router.get('/:id', (req, res) => {
                         model:Goal,
                         include:[{model:Categories}]
                     }
-                ],
+                ]
+            },
+            {
                 model:Comment,
                 include:[{model:Goal}]
             }
         ]
     }).then(dbProfileData=>{
-        const profile = dbProfileData.get({ plain: true});
-        res.render('profile', {profile: profile});
+        let profile = dbProfileData.get({ plain: true});
+        Member_Goal.findAll({
+            where:{
+                status:'Completed',
+                user_id: req.params.id
+            }
+        }).then(dbCompGoalData =>{
+
+            const completedGoal = dbCompGoalData.map(data => data.get({ plain: true }));
+            profile.completedGoal = completedGoal;
+            res.render('profile', {profile: profile, loggedIn: req.session.loggedIn});
+        })
     }).catch(err =>{res.status(500).json(err)});
 });
 
@@ -68,19 +80,29 @@ router.get('/', withAuth, (req, res) => {
                         model:Goal,
                         include:[{model:Categories}]
                     }
-                ],
+                ]
+            },
+            {
                 model:Comment,
                 include:[{model:Goal}]
             }
         ]
     }).then(dbProfileData=>{
-        const profile = dbProfileData.get({ plain: true});
+        let profile = dbProfileData.get({ plain: true});
         // const profile = dbProfileData.map(data => data.get({ plain: true }));
         Categories.findAll().then(dbCategoriesData =>{
-            const categories = dbCategoriesData.map(data => data.get({ plain: true }));
-
-            // const categories = dbCategoriesData.get({ plain: true});
-            res.render('profile', {profile: profile, categories:categories, loggedIn: req.session.loggedIn, postOwner:true});
+            Member_Goal.findAll({
+                where:{
+                    status:'Completed',
+                    user_id: req.session.user_id
+                }
+            }).then(dbCompGoalData =>{
+                // const compGoal = dbCompGoalData.get({ plain: true});
+                const completedGoal = dbCompGoalData.map(data => data.get({ plain: true }));
+                profile.completedGoal = completedGoal;
+                const categories = dbCategoriesData.map(data => data.get({ plain: true }));
+                res.render('profile', {profile: profile, categories:categories, loggedIn: req.session.loggedIn, postOwner:true});
+            })
         })
     }).catch(err =>{res.status(500).json(err)});
 })
