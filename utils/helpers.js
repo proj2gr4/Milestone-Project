@@ -25,5 +25,8 @@ module.exports = {
             .replace('www.', '')
             .split('/')[0]
             .split('?')[0];
+    },
+    counter: arr=>{
+      return arr.length;
     }
 }

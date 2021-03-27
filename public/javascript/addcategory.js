@@ -26,5 +26,32 @@ async function categoryCreateFormHandler(event) {
         }
     }
 }
+ async function deleteGoal(id){
+    //  alert (id);
+    const goalId = id;
+    const response = await fetch(`/api/goals/${goalId}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if (response.ok) {
+        // location.reload();
+        location.replace("/profile");
+    } else {
+        alert(response.statusText);
+    }
+}
+async function deleteStep(id){
+    // alert(id);
+    const response = await fetch(`/api/steps/${id}`, {
+        method:'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if (response.ok) {
+        location.reload();
+    } else {
+        alert(response.statusText);
+    }   
+}
 
+// document.querySelector('#del-step-btn').addEventListener('submit', deleteFormHandler);
 document.querySelector('#addCategoryModal').addEventListener('submit', categoryCreateFormHandler);

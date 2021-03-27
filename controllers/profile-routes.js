@@ -4,6 +4,7 @@ const sequelize = require('../config/connection');
 const {Categories, Comment, Goal, Member_Goal, Step, User} = require('../models');
 const withAuth = require('../utils/auth');
 const { Op } = require("sequelize");
+const { findAll } = require('../models/User');
 
 // View Others profile:
 router.get('/:id', (req, res) => {
@@ -32,11 +33,46 @@ router.get('/:id', (req, res) => {
                         include:[{model:Categories}]
                     }
                 ]
+            },
+            {
+                model:Comment,
+                include:[{model:Goal}]
             }
         ]
     }).then(dbProfileData=>{
-        const profile = dbProfileData.get({ plain: true});
-        res.render('profile', {profile: profile});
+        let profile = dbProfileData.get({ plain: true});
+        Member_Goal.findAll({
+            where:{
+                status:'Completed',
+                user_id: req.params.id
+            }
+        }).then(dbCompGoalData =>{
+            Member_Goal.findAll({
+                where:{user_id:req.params.id},
+                include:{
+                    model:Goal,
+                    include:{
+                        model:Member_Goal,
+                        include:{
+                            model:User,
+                            // limit:10,
+                            where:{id:{[Op.not]: req.params.id}},
+                        }
+                    }
+                }
+            }).then(dbMemberParticipatingData =>{
+                const membersGoal = dbMemberParticipatingData.map(data => data.get({ plain: true }));
+                profile.membersGoal = membersGoal;
+                // console.log(membersGoal);
+                const completedGoal = dbCompGoalData.map(data => data.get({ plain: true }));
+                profile.completedGoal = completedGoal;
+                res.render('profile', {profile: profile, loggedIn: req.session.loggedIn});
+            })
+
+            // const completedGoal = dbCompGoalData.map(data => data.get({ plain: true }));
+            // profile.completedGoal = completedGoal;
+            // res.render('profile', {profile: profile, loggedIn: req.session.loggedIn});
+        })
     }).catch(err =>{res.status(500).json(err)});
 });
 
@@ -53,7 +89,6 @@ router.get('/', withAuth, (req, res) => {
                 include:[
                     {
                         model:Member_Goal,
-                        where:{user_id:{[Op.not]: req.session.user_id}},
                         include:[{model:User}]
                     },
                     {model:Categories}
@@ -64,19 +99,49 @@ router.get('/', withAuth, (req, res) => {
                 include:[
                     {
                         model:Goal,
+                        where:{user_id:{[Op.not]: req.session.user_id}},
                         include:[{model:Categories}]
                     }
                 ]
+            },
+            {
+                model:Comment,
+                include:[{model:Goal}]
             }
         ]
     }).then(dbProfileData=>{
-        const profile = dbProfileData.get({ plain: true});
+        let profile = dbProfileData.get({ plain: true});
         // const profile = dbProfileData.map(data => data.get({ plain: true }));
         Categories.findAll().then(dbCategoriesData =>{
-            const categories = dbCategoriesData.map(data => data.get({ plain: true }));
-
-            // const categories = dbCategoriesData.get({ plain: true});
-            res.render('profile', {profile: profile, categories:categories, loggedIn: req.session.loggedIn, postOwner:true});
+            Member_Goal.findAll({
+                where:{
+                    status:'Completed',
+                    user_id: req.session.user_id
+                }
+            }).then(dbCompGoalData =>{
+                // const compGoal = dbCompGoalData.get({ plain: true});
+                Member_Goal.findAll({
+                    where:{user_id:req.session.user_id},
+                    include:{
+                        model:Goal,
+                        include:{
+                            model:Member_Goal,
+                            include:{
+                                model:User,
+                                where:{id:{[Op.not]: req.session.user_id}}
+                            }
+                        }
+                    }
+                }).then(dbMemberParticipatingData =>{
+                    const membersGoal = dbMemberParticipatingData.map(data => data.get({ plain: true }));
+                    profile.membersGoal = membersGoal;
+                    console.log(membersGoal);
+                    const completedGoal = dbCompGoalData.map(data => data.get({ plain: true }));
+                    profile.completedGoal = completedGoal;
+                    const categories = dbCategoriesData.map(data => data.get({ plain: true }));
+                    res.render('profile', {profile: profile, categories:categories, loggedIn: req.session.loggedIn, postOwner:true});
+                })
+            })
         })
     }).catch(err =>{res.status(500).json(err)});
 })

@@ -7,7 +7,11 @@
           <div class="section-heading">
                 <h2>Welcome to Milestone</h2>
                 <div class="main-button d-flex justify-content-center" data-toggle="modal" data-target="#myModal">
-                  <div class="scroll-to-section"><a href="#">Create a Goal!</a></div>
+                  {{#if loggedIn}}
+                    <div class="scroll-to-section"><a href="#">Create a Goal!</a></div>
+                  {{else}}
+                    <div class="scroll-to-section"><a href="/login">Login to create Goal!</a></div>
+                  {{/if}}
                 </div>
           </div>
         </div>
