@@ -83,6 +83,7 @@ p {
 }
 
 .comment:nth-child(odd) {
+
   background-color:#ededed;
 }
 .comment:nth-child(even) {
@@ -95,7 +96,6 @@ p {
 #button-comment {
   background-color: #f5a425;
   color: #fff;
-  padding: 20px 20px;
   text-transform: uppercase;
 
 }
