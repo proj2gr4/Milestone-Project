@@ -44,7 +44,7 @@ The application functionality:
 
 GitHub: [MILESTONE PROJECT](https://github.com/proj2gr4/Milestone-Project)
 
-##Contributors:
+## Contributors:
 - HUI SHAN TANG : Neeko_tvxq@hotmail.com
 - TAYLOR VAN SCOY : vanscoytaylor@gmail.com
 - FAZEL RYAN CHOWDHURY : ryan7998@gmail.com
