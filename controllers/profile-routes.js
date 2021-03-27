@@ -31,7 +31,9 @@ router.get('/:id', (req, res) => {
                         model:Goal,
                         include:[{model:Categories}]
                     }
-                ]
+                ],
+                model:Comment,
+                include:[{model:Goal}]
             }
         ]
     }).then(dbProfileData=>{
@@ -66,7 +68,9 @@ router.get('/', withAuth, (req, res) => {
                         model:Goal,
                         include:[{model:Categories}]
                     }
-                ]
+                ],
+                model:Comment,
+                include:[{model:Goal}]
             }
         ]
     }).then(dbProfileData=>{

@@ -11,7 +11,12 @@
                         <h2 class="mt-4">Steps to reach the goal</h2>
                     </div>
                     <div class="row">
+                        {{!-- if members update available: (smaller div) --}}
+                        {{#if goal.member_goals}}
                         <div class="col-md-8 my-2">
+                        {{else}}
+                        <div class="col-md-12 my-2">
+                        {{/if}}
                             {{#each goal.steps as |step|}}
                                 <div class="mb-5 bg-dark p-5">
                                     <h4>{{step.title}}</h4>
