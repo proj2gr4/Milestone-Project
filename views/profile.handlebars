@@ -15,25 +15,17 @@
                 {{/if}}
               </div>
               <div class="col-md-6">
-                <div class="product-item1">
-                  <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>
-                  <div class="down-content1">
-                    <h4 class="text-white" >{{profile.username}}'s email address: {{profile.email}}</h4>
-                    <div ><a href="#viewPostsModal" data-toggle="modal">View posts</a></div>
+                    <h5 class="text-white" >{{profile.email}}</h5>
+                    <div class="p-2"><a href="#viewPostsModal" data-toggle="modal">View posts</a></div>
                     {{#if postOwner}} 
-                      <div><a href="#editProfileModal" data-toggle="modal">Edit Profile Information</a></div>
+                      <div class="p-2"><a href="#editProfileModal" data-toggle="modal">Edit Profile Information</a></div>
                     {{/if}}
-                    <ul class="stars">
+                    <ul class="row justify-content-md-center">
                       {{#each profile.completedGoal}}
-                        <li><i class="bi bi-star-fill"></i></li>
+                        <h4><i class="bi bi-star-fill text-warning"></i></h4>
                       {{/each}}
-                    </ul>
-                    Goals Achieved: {{counter profile.completedGoal}}
- 
-
-                    <div class="scroll-to-section"><a href="/dashboard">View Dashboard</a></div>
-                  </div>
-                </div>
+                    </ul class="p-2">
+                   <div class="p-2">Goals Achieved: {{counter profile.completedGoal}}</div>
               </div>
             </section>
 
@@ -55,7 +47,7 @@
                     <p class="text-white">{{goal.description}}</p>
                     {{!-- <p class="text-center text-white"><a class="btn btn-success">Start</a></p> --}}
                     <p class="text-white">'{{goal.title}}' goal belongs to 
-                    <a href="/categories/{{goal.category.id}}"> {{goal.category.category_name}}</a> category and the status is '{{goal.status}}' which is due on {{format_dateTwo goal.due_date}}</p>
+                    <a href="/dashboard/{{goal.category.id}}"> {{goal.category.category_name}}</a> category and the status is '{{goal.status}}' which is due on {{format_dateTwo goal.due_date}}</p>
                     {{!-- <p class="text-white">Due Date: {{format_dateTwo goal.due_date}}</p> --}}
                 </div>
               {{/each}}
@@ -71,7 +63,7 @@
                     <p class="text-white">{{goals.goal.description}}</p>
                     {{!-- <p class="text-center text-white"><a class="btn btn-success">Start</a></p> --}}
                     <p class="text-white">'{{goals.goal.title}}' goal belongs to 
-                    <a href="/categories/{{goals.goal.category.id}}"> {{goals.goal.category.category_name}}</a> category and the status is {{goals.goal.Status}} which is due on {{format_dateTwo goals.goal.due_date}}</p>
+                    <a href="/dashboard/{{goals.goal.category.id}}"> {{goals.goal.category.category_name}}</a> category and the status is {{goals.goal.Status}} which is due on {{format_dateTwo goals.goal.due_date}}</p>
                     {{!-- <p class="text-white">Due Date: {{format_dateTwo goal.due_date}}</p> --}}
                 </div>
               {{/each}}
@@ -225,15 +217,15 @@
 {{!-- import dashboard.js to create goal --}}
 <script src="/javascript/dashboard.js"></script>
 <!-- Bootstrap core JavaScript -->
-<script src="/vendor/FriendStatus/jquery/jquery.min.js"></script>
-<script src="/vendor/FriendStatus/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+{{!-- <script src="/vendor/FriendStatus/jquery/jquery.min.js"></script> --}}
+{{!-- <script src="/vendor/FriendStatus/bootstrap/js/bootstrap.bundle.min.js"></script> --}}
+{{!-- 
 
 <!-- Additional Scripts -->
 <script src="/assets/FriendStatus/js/custom.js"></script>
 <script src="/assets/FriendStatus/js/owl.js"></script>
 <script src="/assets/FriendStatus/js/slick.js"></script>
 <script src="/assets/FriendStatus/js/isotope.js"></script>
-<script src="/assets/FriendStatus/js/accordions.js"></script>
+<script src="/assets/FriendStatus/js/accordions.js"></script> --}}
 
   

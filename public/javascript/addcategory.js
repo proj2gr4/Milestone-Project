@@ -40,5 +40,18 @@ async function categoryCreateFormHandler(event) {
         alert(response.statusText);
     }
 }
+async function deleteStep(id){
+    // alert(id);
+    const response = await fetch(`/api/steps/${id}`, {
+        method:'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if (response.ok) {
+        location.reload();
+    } else {
+        alert(response.statusText);
+    }   
+}
 
+// document.querySelector('#del-step-btn').addEventListener('submit', deleteFormHandler);
 document.querySelector('#addCategoryModal').addEventListener('submit', categoryCreateFormHandler);

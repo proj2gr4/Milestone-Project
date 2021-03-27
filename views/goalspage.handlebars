@@ -17,13 +17,25 @@
                         {{else}}
                         <div class="col-md-12 my-2">
                         {{/if}}
-                            {{#each goal.steps as |step|}}
+                        {{#if postOwner}}
+                            {{#each goal.steps}}
                                 <div class="mb-5 bg-dark p-5">
-                                    <h4>{{step.title}}</h4>
-                                    <p>{{step.description}}</p>
-                                    <p> Starting date: <b>{{format_dateTwo step.start_date}}</b> and complete it by <b>{{format_dateTwo step.due_date}}</b></p>
+                                    <h4>{{this.title}}</h4>
+                                    <p>{{this.description}}</p>
+                                    <p> Starting date: <b>{{format_dateTwo this.start_date}}</b> and complete it by <b>{{format_dateTwo this.due_date}}</b></p>
+                                    <button id="del-step-btn" type="button" class="btn btn-danger btn-sm" onclick="deleteStep({{this.id}})">Delete Step</button> 
                                 </div>
                             {{/each}}
+                        {{else}}
+                                {{#each goal.steps}}
+                                    <div class="mb-5 bg-dark p-5">
+                                        <h4>{{this.title}}</h4>
+                                        <p>{{this.description}}</p>
+                                        <p> Starting date: <b>{{format_dateTwo this.start_date}}</b> and complete it by <b>{{format_dateTwo this.due_date}}</b></p>
+                                    </div>
+                                {{/each}}
+                        {{/if}}
+
                         </div>
                         {{!-- Members updates: --}}
                         <div class="col-md-4 my-2">
@@ -59,19 +71,15 @@
                 </div>
                 {{!-- (if owner of the post) --}}
                 {{#if postOwner}} 
-                    {{!-- add new category button --}}
-                    <button id="add-category-btn" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addCategoryModal">Add New Step</button> 
-                    {{!-- Delete Goal: --}}
-                    <button id="delete-goal-btn" type="button" class="btn btn-danger btn-lg" onclick="deleteGoal({{goal.id}})">Delete This Goal</button> 
-                    {{!-- <button id="delete-steps-btn" type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#deleteStepModal">Delete Step</button>  --}}
-                    {{!-- <select id="delete_step" onchange="deleteStep({{currentUser.id}}, {{member_goal.id}}, {{goal.id}})" class="btn btn-success btn-lg form-select form-select-lg" aria-label=".form-select-lg">
-                        <option selected>{{member_goal.status}}</option>
-                        <option>Not Started</option>
-                        {{#each goal.steps as |step|}}
-                            <option>Started '{{step.title}}'</option>
-                        {{/each}}
-                        <option>Completed</option>
-                    </select> --}}
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Menu
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <button id="add-category-btn" type="button" class="dropdown-item" data-toggle="modal" data-target="#addCategoryModal">Add New Step</button> 
+                            <button id="delete-goal-btn" type="button" class="dropdown-item" onclick="deleteGoal({{goal.id}})">Delete This Goal</button> 
+                        </div>
+                    </div>
                 {{/if}}
                 {{#if member_goal.status}}
                     {{!-- update status: --}}
@@ -86,8 +94,14 @@
                     {{!-- Cancel Participation Button: --}}
                     <button id="cancelParticpateBtn" class="btn btn-danger btn-lg" memberGoalsId = "{{member_goal.id}}">Cancel Participation</button>
                 {{else}}
-                    {{!-- Participate Button: --}}
-                    <button id="particpateBtn" class="btn btn-success btn-lg" userId = "{{currentUser.id}}">Participate</button>
+                    {{#if loggedIn}}
+                        {{!-- Participate Button: --}}
+                        <button id="particpateBtn" class="btn btn-success btn-lg" userId = "{{currentUser.id}}">Participate</button>
+                    {{else}}
+                    <div class="main-button">
+                        <div class="scroll-to-section"><a href="/login">Login to Participate</a></div>
+                    </div>
+                    {{/if}}
                 {{/if}}
             </div>
         </div>
@@ -175,7 +189,9 @@
     </div>
 </div>
 <script src="/javascript/comment.js"></script>
-<script src="/javascript/participateGoal.js"></script>
-<script src="/javascript/deleteParticipation.js"></script>
 {{!-- add js if goalowner visits goal page --}}
 {{#if postOwner}}<script src="/javascript/addcategory.js"></script>{{/if}}
+{{#if loggedIn}}
+    <script src="/javascript/participateGoal.js"></script>
+    <script src="/javascript/deleteParticipation.js"></script>
+{{/if}}
