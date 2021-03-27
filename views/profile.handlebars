@@ -15,28 +15,17 @@
                 {{/if}}
               </div>
               <div class="col-md-6">
-                <div class="product-item1">
-                  <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>
-                  <div class="down-content1">
-                    <h4 class="text-white" >{{profile.username}}'s email address: {{profile.email}}</h4>
-                    <div class="scroll-to-section"><a href="#">View posts</a></div>
-                    <div class="scroll-to-section"><a href="#">View comments</a></div>
-                    <ul class="stars">
-                        <li><i class="fa fa-star"></i></li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                          <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                          <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                          <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                        </svg>
-                    </ul>
-
-                    <div class="scroll-to-section"><a href="/dashboard">View Dashboard</a></div>
-                  </div>
-                </div>
+                    <h5 class="text-white" >{{profile.email}}</h5>
+                    <div class="p-2"><a href="#viewPostsModal" data-toggle="modal">View posts</a></div>
+                    {{#if postOwner}} 
+                      <div class="p-2"><a href="#editProfileModal" data-toggle="modal">Edit Profile Information</a></div>
+                    {{/if}}
+                    <ul class="row justify-content-md-center">
+                      {{#each profile.completedGoal}}
+                        <h4><i class="bi bi-star-fill text-warning"></i></h4>
+                      {{/each}}
+                    </ul class="p-2">
+                   <div class="p-2">Goals Achieved: {{counter profile.completedGoal}}</div>
               </div>
             </section>
 
@@ -58,7 +47,7 @@
                     <p class="text-white">{{goal.description}}</p>
                     {{!-- <p class="text-center text-white"><a class="btn btn-success">Start</a></p> --}}
                     <p class="text-white">'{{goal.title}}' goal belongs to 
-                    <a href="/categories/{{goal.category.id}}"> {{goal.category.category_name}}</a> category and the status is '{{goal.status}}' which is due on {{format_dateTwo goal.due_date}}</p>
+                    <a href="/dashboard/{{goal.category.id}}"> {{goal.category.category_name}}</a> category and the status is '{{goal.status}}' which is due on {{format_dateTwo goal.due_date}}</p>
                     {{!-- <p class="text-white">Due Date: {{format_dateTwo goal.due_date}}</p> --}}
                 </div>
               {{/each}}
@@ -74,7 +63,7 @@
                     <p class="text-white">{{goals.goal.description}}</p>
                     {{!-- <p class="text-center text-white"><a class="btn btn-success">Start</a></p> --}}
                     <p class="text-white">'{{goals.goal.title}}' goal belongs to 
-                    <a href="/categories/{{goals.goal.category.id}}"> {{goals.goal.category.category_name}}</a> category and the status is {{goals.goal.Status}} which is due on {{format_dateTwo goals.goal.due_date}}</p>
+                    <a href="/dashboard/{{goals.goal.category.id}}"> {{goals.goal.category.category_name}}</a> category and the status is {{goals.goal.Status}} which is due on {{format_dateTwo goals.goal.due_date}}</p>
                     {{!-- <p class="text-white">Due Date: {{format_dateTwo goal.due_date}}</p> --}}
                 </div>
               {{/each}}
@@ -82,16 +71,20 @@
           </div>
         </section>
 
-        <!-- Friend Status -->
+        <!-- Participants -->
         <section class="section courses">
           <div class="col-md-12">
             <section class="section-heading mt-0">
               <h2 class="mt-5">Other members participating with {{profile.username}}</h2>
               <div class="">
                 <div class="row justify-content-center">
-
-                  {{#each profile.goals as |goals|}}
-                      {{#each goals.member_goals as |member_goals|}}
+                  {{!-- {{#unless loggedIn}}
+                    <div class="main-button d-flex justify-content-center">
+                      <div class="scroll-to-section"><a href="/login">Login to see participants</a></div>
+                    </div>
+                  {{/unless}} --}}
+                  {{#each profile.membersGoal as |goals|}}
+                      {{#each goals.goal.member_goals as |member_goals|}}
                         <div class="card m-3 p-3 bg-dark col-md-3 rounded-0">
                           <div class="row g-0">
                             <div class="col-md-4 align-self-center">
@@ -104,8 +97,8 @@
                             <div class="col-md-8">
                               <div class="card-body p-0">
                                 <p class="card-title mt-1">{{member_goals.user.username}}</p>
-                                <h6 class="card-text">{{member_goals.status}}</h6> <p> to achieve <a href="/goals/{{goals.id}}">'{{goals.title}}'</a></p>
-                                <p class="card-text"><small class="text-muted">Last updated {{format_dateTwo member_goals.updatedAt}}</small></p>
+                                <h6 class="card-text">{{member_goals.status}}</h6> <p> to achieve <a href="/goals/{{goals.goal.id}}">'{{goals.goal.title}}'</a></p>
+                                <p class="card-text"><small>Last updated {{format_dateTwo member_goals.updatedAt}}</small></p>
                               </div>
                             </div>
                           </div>
@@ -117,13 +110,58 @@
             </section>
           </div>
         </section>
-
-
       </div>
     </div>
   </div>
 </section>
-<!-- Modal -->
+
+{{!-- View posts modal: --}}
+<div class="modal fade" id="viewPostsModal" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Posts by {{profile.username}}</h4>
+      </div>
+      <div class="modal-body text-dark">
+        {{#each profile.comments as |posts|}}
+          <div class="col-md-12 p-2 m-2 border-bottom">
+            <h6 class="text-black">"{{posts.comment}}"</h6> 
+             in <i><a href="/goals/{{posts.goal.id}}" target="_blank"> {{posts.goal.title}}</a></i>
+            on <i class="small">{{format_dateTwo posts.goal.createdAt}}</i>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+{{!-- Edit Profile Modal --}}
+<div class="modal fade" id="editProfileModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content" enctype="multipart/form-data">
+      <form class="edit-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit your Profile</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input class="form-control" type="text" id="username" value="{{profile.username}}"/>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" id="email" value="{{profile.email}}"/>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" id="editprofile-btn" class="btn btn-default font-weight-bold text-white" userid="{{profile.id}}">Submit</button>
+          <button type="button" class="btn btn-default font-weight-bold text-white" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- Create Goal Modal -->
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
     <!-- Modal content-->
@@ -172,18 +210,22 @@
   </div>
 </div>
 
-    {{!-- import dashboard.js to create goal --}}
-    <script src="/javascript/dashboard.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script src="/vendor/FriendStatus/jquery/jquery.min.js"></script>
-    <script src="/vendor/FriendStatus/bootstrap/js/bootstrap.bundle.min.js"></script>
+{{!-- if post owner --}}
+{{#if postOwner}} 
+  <script src="/javascript/postownersfile.js"></script>
+{{/if}}
+{{!-- import dashboard.js to create goal --}}
+<script src="/javascript/dashboard.js"></script>
+<!-- Bootstrap core JavaScript -->
+{{!-- <script src="/vendor/FriendStatus/jquery/jquery.min.js"></script> --}}
+{{!-- <script src="/vendor/FriendStatus/bootstrap/js/bootstrap.bundle.min.js"></script> --}}
+{{!-- 
 
-
-    <!-- Additional Scripts -->
-    <script src="/assets/FriendStatus/js/custom.js"></script>
-    <script src="/assets/FriendStatus/js/owl.js"></script>
-    <script src="/assets/FriendStatus/js/slick.js"></script>
-    <script src="/assets/FriendStatus/js/isotope.js"></script>
-    <script src="/assets/FriendStatus/js/accordions.js"></script>
+<!-- Additional Scripts -->
+<script src="/assets/FriendStatus/js/custom.js"></script>
+<script src="/assets/FriendStatus/js/owl.js"></script>
+<script src="/assets/FriendStatus/js/slick.js"></script>
+<script src="/assets/FriendStatus/js/isotope.js"></script>
+<script src="/assets/FriendStatus/js/accordions.js"></script> --}}
 
   

@@ -155,6 +155,33 @@ router.put('/:id', upload.single('profile_img'), (req, res) => {
     });
 });
 
+// Put /api/users/edit/1: for profile update
+router.put('/edit/:id', (req, res) => {
+
+    User.update(
+        {
+            username: req.body.username,
+            email: req.body.email
+            // profile_img: req.file.path
+        },
+        {
+            where:{
+                id: req.params.id
+            }
+        }
+    ).then(dbUserData =>{
+        if (!dbUserData[0]) {
+            res.status(404).json({ message: 'No user found with this id' });
+            return;
+        }
+        res.json(dbUserData);
+
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
 // Put /api/users/heroku/1 : api to update profile image with static files:
 router.put('/heroku/:id', (req, res) => {
     User.update(
