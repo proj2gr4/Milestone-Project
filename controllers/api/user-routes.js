@@ -5,10 +5,6 @@ const aws = require('aws-sdk');
 const fs = require('fs');
 require('dotenv').config();
 
-
-
-
-
 // multer object to upload file:
 const multer = require('multer');
 
@@ -146,6 +142,7 @@ router.post('/login', (req, res) =>{
         }
     }).then(dbUserData => {
         if(!dbUserData){
+            res.statusMessage = "No user with that username address!";
             res.status(400).json({message: 'No user with that username address!'});
             return;
         }
