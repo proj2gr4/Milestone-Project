@@ -1,6 +1,13 @@
 const router = require('express').Router();
 const {Categories, Comment, Goal, Member_Goal, Step, User} = require('../../models');
 const { v4: uuidv4 } = require('uuid');
+const aws = require('aws-sdk');
+const fs = require('fs');
+require('dotenv').config();
+
+
+
+
 
 // multer object to upload file:
 const multer = require('multer');
@@ -32,6 +39,59 @@ const upload = multer({
     },
     fileFilter: fileFilter
 });
+
+async function signup(req, res) {
+    let resultuser;
+    aws.config.setPromisesDependency();
+    aws.config.update({
+      accessKeyId: process.env.ACCESSKEYID,
+      secretAccessKey: process.env.SECRETACCESSKEY,
+      region: process.env.REGION
+    });
+    const s3 = new aws.S3();
+    var params = {
+      ACL: 'public-read',
+      Bucket: process.env.BUCKET_NAME,
+      Body: fs.createReadStream(req.file.path),
+      Key: `userAvatar/${req.file.originalname}`
+    };
+    
+    s3.upload(params, (err, data) => {
+      if (err) {
+        console.log('Error occured while trying to upload to S3 bucket', err);
+      }
+
+      if (data) {
+        fs.unlinkSync(req.file.path); // Empty temp folder
+        //let filePath = req.file ? req.file.path : null
+        const locationUrl = data.Location;
+        let newUser = User.create({
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+            profile_img: locationUrl
+        })
+        .then(dbUserData => {
+            console.log(dbUserData);
+            req.session.save(() => {
+             req.session.user_id = dbUserData.id;
+             req.session.username = dbUserData.username;
+             req.session.loggedIn = true;
+        
+            res.json(dbUserData);
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err)
+        });
+    
+      }
+    });
+  }
+
+
+
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -76,29 +136,7 @@ router.get('/:id', (req, res) => {
 
 //Post /api/users
 router.post('/', upload.single('profile_img'), (req, res) => {
-    let filePath = req.file ? req.file.path : null
-    User.create({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password,
-        profile_img: filePath
-    })
-    .then(dbUserData => {
-        req.session.save(() => {
-         req.session.user_id = dbUserData.id;
-         req.session.username = dbUserData.username;
-         req.session.loggedIn = true;
-    
-        
-        res.json(dbUserData);
-        });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err)
-    });
-
-
+    signup(req, res)
 });
 
 router.post('/login', (req, res) =>{
@@ -138,6 +176,33 @@ router.put('/:id', upload.single('profile_img'), (req, res) => {
         {
             
             individualHooks: true,
+            where:{
+                id: req.params.id
+            }
+        }
+    ).then(dbUserData =>{
+        if (!dbUserData[0]) {
+            res.status(404).json({ message: 'No user found with this id' });
+            return;
+        }
+        res.json(dbUserData);
+
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+// Put /api/users/edit/1: for profile update
+router.put('/edit/:id', (req, res) => {
+
+    User.update(
+        {
+            username: req.body.username,
+            email: req.body.email
+            // profile_img: req.file.path
+        },
+        {
             where:{
                 id: req.params.id
             }

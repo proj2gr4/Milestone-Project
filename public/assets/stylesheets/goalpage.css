@@ -82,6 +82,7 @@ p {
   margin-bottom: 1%;
 }
 
+
 .comment:nth-child(even) {
   background-color:rgb(160, 160, 160);
 }
@@ -92,7 +93,6 @@ p {
 #button-comment {
   background-color: #f5a425;
   color: #fff;
-  padding: 20px 20px;
   text-transform: uppercase;
 
 }

@@ -10,6 +10,6 @@ async function daleteParticipateFormHandler(event){
     } else {
         alert(response.statusText);
     }
-
 }
+
 document.querySelector('#cancelParticpateBtn').addEventListener('click', daleteParticipateFormHandler);

@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
             {model:User}
         ]
     }).then(dbGoalData=>{
-        const goal = dbGoalData.get({ plain: true});
+        let goal = dbGoalData.get({ plain: true});
         let owner = (req.session.user_id === goal.user.id) ? true : false
         // if User is logged in:
         if(req.session.user_id){
@@ -68,6 +68,8 @@ router.get('/:id', (req, res) => {
                         member_goal = currentUser.member_goals[i];
                     }
                 }
+                // goal.postOwner = owner;
+                // console.log(goal);
                 res.render('goalspage', {goal: goal, time: calculateTime(goal.due_date), loggedIn: req.session.loggedIn, postOwner: owner, currentUser:currentUser, member_goal:member_goal });
             })
         }else{
