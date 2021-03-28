@@ -32,7 +32,7 @@ The application functionality:
 
 ## Screenshots
 - Homepage
-![Screeshot](screenshots/Milestone.png)
+![Screeshot](screenshots/Homepage.png)
 - Login/Signup page
 - Contact Us Page
 - Profile Page
