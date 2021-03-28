@@ -25,9 +25,11 @@ How to install :
 The application functionality:
 - Homepage, Dashboard, Login/Logout Navigation.
 - Sign Up, Login, Logout, user credentials are saved.
-- View list of posts, View Content of a post, Create Posts, Add Comments, Delete Comments.
-- Able to connect with friends, show their status, join in as a group.
-- Three categories with different goals, with different steps, and a star will be shown once the user completed a milestone.
+- Create a goal, participate in a goal.
+- Add steps to a goal, add comments to a goal.
+- Update status in a goal, or cancel participation.
+- Able to connect with friends, show their status.
+- Profile page can view your own posts.
 
 
 ## Screenshots
