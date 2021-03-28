@@ -17,7 +17,13 @@ async function loginFormHandler(event) {
       if (response.ok) {
         document.location.replace('/profile');
       } else {
-        alert(response.statusText);
+        if(response.statusText == "No user with that username address!"){
+          $("#Modal-text").text("That Username does not exist!");
+          $("#login-Error-Username-Modal").modal();
+        }else{
+          $("#Modal-text").text("Wrong Password!");
+          $("#login-Error-Username-Modal").modal();
+        }
       }
     }
   }
