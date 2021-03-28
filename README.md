@@ -25,16 +25,39 @@ How to install :
 The application functionality:
 - Homepage, Dashboard, Login/Logout Navigation.
 - Sign Up, Login, Logout, user credentials are saved.
-- View list of posts, View Content of a post, Create Posts, Add Comments, Delete Comments.
-- Able to connect with friends, show their status, join in as a group.
-- Three categories with different goals, with different steps, and a star will be shown once the user completed a milestone.
+- Create a goal, participate in a goal.
+- Add steps to a goal, add comments to a goal.
+- Update status in a goal, or cancel participation.
+- Able to connect with friends, show their status.
+- Profile page can view your own posts.
+
+
+## Screenshots
+- Homepage
+![Screeshot](screenshots/Homepage.png)
+- Login/Signup page
+![Screeshot](screenshots/Milestone2.png)
+![Screeshot](screenshots/Milestone3.png)
+- Profile Page
+![Screeshot](screenshots/Milestone6.png)
+- Dashboard
+![Screeshot](screenshots/Milestone1.png)
+- Create a goal
+![Screeshot](screenshots/Milestone4.png)
+- Goal Page
+![Screeshot](screenshots/Milestone5.png)
+----------------------------------------------------------------
+- To make the username field in our database unique
+![Screeshot](screenshots/image.png)
+![Screeshot](screenshots/image2.png)
+
 
 ## Usage
 [Milestone Website](https://milestone-goals.herokuapp.com)
 
 ## Credits
 
-- Upslash photographs
+- Upslash
 - Trello
 - Creately
 - Bootstrap
