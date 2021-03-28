@@ -1,0 +1,30 @@
+<div class="comments">
+  {{#each this}}
+  <section class="comment">
+    <div class="row">
+      <div class="col-md-4">
+        <a href="/profile/{{user.id}}">
+          <img class="img-thumbnail img-fluid rounded" style ="max-width:100px" src="{{user.profile_img}}"></img>
+        </a>
+        </br>
+          {{user.username}}
+      </div>
+      <div class="col-md-8 text-left">
+        <div class="container d-flex h-100">
+            <div class="row justify-content-center align-self-center">
+              <blockquote class="blockquote">
+                <h6 class="mb-0">"{{comment}}"</h6>
+                <span class="blockquote-footer">on <cite title="Source Title">{{format_dateThree created_at}}</cite></span>
+              </blockquote>
+            </div>
+          </div>
+        {{!-- <div class="container d-flex h-100">
+            <div class="row justify-content-center align-self-center">
+              <h6>{{comment}}</h6>
+            </div>
+              <small>on {{format_dateTwo created_at}}</small>
+        </div> --}}
+    </div>
+  </section>
+  {{/each}}
+</div>

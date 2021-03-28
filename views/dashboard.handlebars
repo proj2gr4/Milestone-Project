@@ -1,0 +1,115 @@
+ {{!-- <link rel="stylesheet" href="../assets/stylesheets/dashboard.css"> --}}
+ <!-- ***** Dashboard ***** -->
+<section class="section courses">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+                <h2>Welcome to Milestone</h2>
+                <div class="main-button d-flex justify-content-center" data-toggle="modal" data-target="#myModal">
+                  {{#if loggedIn}}
+                    <div class="scroll-to-section"><a href="#">Create a Goal!</a></div>
+                  {{else}}
+                    <div class="scroll-to-section"><a href="/login">Login to create Goal!</a></div>
+                  {{/if}}
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="owl-theme section-heading">
+        <h2 class="mt-4">Or Choose a goal</h2>
+        <div class="container">
+          <div class="row justify-content-center">
+            {{#each categories}}
+              <div class="main-button d-flex justify-content-center">
+                <a href="/dashboard/{{id}}">
+                  <img class="img-fluid" style="max-width: 100px;" src="{{img_url}}">
+                  {{category_name}}
+                </a>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+        {{#if goals.length}}
+          <div class="row justify-content-center section-heading">
+            {{#each goals as |goal|}}
+              <div class="m-3 p-3 bg-dark col-md-3 rounded-0">
+                <div class="card-header bg-transparent">
+                    <a href="/goals/{{id}}"><h4>{{title}}</h4></a>
+                    <p class="mb-0"><i class="bi bi-tag"></i><a class="text-white" href="/dashboard/{{category.id}}">{{category.category_name}}</a></p>
+                </div>
+                <div class="card-body bg-transparent">
+                    <div class="card-text">{{description}}</div>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <div class="card-text">
+                      <i class="bi bi-person-circle"></i> <b class="text-warning">{{member_goals.length}}</b> {{format_plural "member" member_goals.length}} participating
+                    </div>
+                    <div class="card-text"><small>Complete it by <i class="text-warning"> {{format_dateTwo due_date}}</i></small></div>
+
+                </div>
+            </div>
+            {{/each}}
+          </div>
+        {{/if}}
+        
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+  
+    <!-- Modal content-->
+    <div class="modal-content" enctype="multipart/form-data">
+      <form class="create-goal-form">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Create a Goal</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                {{!-- <label for="goal-title">Title</label> --}}
+                <input name="goal-title" type="text" class="form-control" placeholder="Title"/>
+            </div>
+            <div class="form-group">
+                {{!-- <label for="goal-category">Category</label> --}}
+                <select id="goal-category" class="form-control form-select" name="goal-category" aria-label="Default select example">
+                    <option selected> Select Category</option>
+                    {{#if categories.length}}
+                        {{#each categories as |category|}}                        
+                            <option value="{{this.id}}">{{this.category_name}}</option>
+                        {{/each}}
+                    {{/if}}
+                </select>
+            </div>
+            <div class="form-group">
+                {{!-- <label for="goal-sub-category">Sub-category</label> --}}
+                <input id="goal-sub-category" name="goal-sub-category" type="text" class="form-control" placeholder="Sub Category"/>
+            </div>
+             
+            <div class="form-group">
+                {{!-- <label for="goal-description">Description</label> --}}
+                <textarea id="goal-description" name="post-content" class="form-control" rows="3" placeholder="Description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="goalDueDate">Due date</label>
+                <input type="date" id="goalDueDate" class="form-control" name="goalDueDate"  />
+            </div>
+            <div class="form-group">
+                <label for="file" style="cursor: pointer;">Upload Image</label>
+                <input class="form-control" type="file" name="image" id="file" > 
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="submit">Create</button>
+          {{!-- <button type="button" class="btn btn-default">Create</button> --}}
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/javascript/dashboard.js"></script>

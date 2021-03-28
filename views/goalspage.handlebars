@@ -1,0 +1,197 @@
+<!-- ***** Goal Information ***** -->
+<section class="section courses">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="section-heading mb-0"><h2>{{goal.title}}</h2></div>
+                <p class="text-center">Created by <a href="/profile/{{goal.user.id}}">{{goal.user.username}}</a></p>
+                <div class="description mb-5"><h2>{{goal.description}}</h2></div>
+                <div class="instructions mb-5">
+                    <div class="section-heading mb-0">
+                        <h2 class="mt-4">Steps to reach the goal</h2>
+                    </div>
+                    <div class="row">
+                        {{!-- if members update available: (smaller div) --}}
+                        {{#if goal.member_goals}}
+                        <div class="col-md-8 my-2">
+                        {{else}}
+                        <div class="col-md-12 my-2">
+                        {{/if}}
+                        {{#if postOwner}}
+                            {{#each goal.steps}}
+                                <div class="mb-5 bg-dark p-5">
+                                    <h4>{{this.title}}</h4>
+                                    <p>{{this.description}}</p>
+                                    <p> Starting date: <b>{{format_dateTwo this.start_date}}</b> and complete it by <b>{{format_dateTwo this.due_date}}</b></p>
+                                    <button id="del-step-btn" type="button" class="btn btn-danger btn-sm" onclick="deleteStep({{this.id}})">Delete Step</button> 
+                                </div>
+                            {{/each}}
+                        {{else}}
+                                {{#each goal.steps}}
+                                    <div class="mb-5 bg-dark p-5">
+                                        <h4>{{this.title}}</h4>
+                                        <p>{{this.description}}</p>
+                                        <p> Starting date: <b>{{format_dateTwo this.start_date}}</b> and complete it by <b>{{format_dateTwo this.due_date}}</b></p>
+                                    </div>
+                                {{/each}}
+                        {{/if}}
+
+                        </div>
+                        {{!-- Members updates: --}}
+                        <div class="col-md-4 my-2">
+                            <div class="container">
+                                <div class="row">
+                                    {{#each goal.member_goals as |goals|}}
+                                        <div class="card w-100 p-2 m-1 bg-secondary rounded-0">
+                                            <div class="row">
+                                                <div class="col-md-4 align-self-center">
+                                                    {{#if goals.user.profile_img}}
+                                                        <a href="/profile/{{goals.user.id}}"><img src="{{goals.user.profile_img}}" class="img-fluid" alt=""></a>
+                                                        <p class="card-title mt-1">{{goals.user.username}}</p>
+                                                    {{else}}
+                                                        <a href="/profile/{{goals.user.id}}"><img src="/images/default-img.jpg" class="img-fluid" alt=""></a>
+                                                        <p class="card-title mt-1">{{goals.user.username}}</p>
+                                                    {{/if}}
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body text-warning">
+                                                        {{!-- <p class="card-title mt-1">{{goals.user.username}}</p> --}}
+                                                        <h6 class="card-text">{{goals.status}}</h6>
+                                                        <p class="card-text"><small>on {{format_dateTwo goals.updatedAt}}</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                {{!-- (if owner of the post) --}}
+                {{#if postOwner}} 
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Menu
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <button id="add-category-btn" type="button" class="dropdown-item" data-toggle="modal" data-target="#addCategoryModal">Add New Step</button> 
+                            <button id="delete-goal-btn" type="button" class="dropdown-item" onclick="deleteGoal({{goal.id}})">Delete This Goal</button> 
+                        </div>
+                    </div>
+                {{/if}}
+                {{#if member_goal.status}}
+                    {{!-- update status: --}}
+                    <select id="goal_status" onchange="changeStatus({{currentUser.id}}, {{member_goal.id}}, {{goal.id}})" class="btn btn-success btn-lg form-select form-select-lg" aria-label=".form-select-lg">
+                        <option selected>{{member_goal.status}}</option>
+                        <option>Not Started</option>
+                        {{#each goal.steps as |step|}}
+                            <option>Started '{{step.title}}'</option>
+                        {{/each}}
+                        <option>Completed</option>
+                    </select>
+                    {{!-- Cancel Participation Button: --}}
+                    <button id="cancelParticpateBtn" class="btn btn-danger btn-lg" memberGoalsId = "{{member_goal.id}}">Cancel Participation</button>
+                {{else}}
+                    {{#if loggedIn}}
+                        {{!-- Participate Button: --}}
+                        <button id="particpateBtn" class="btn btn-success btn-lg" userId = "{{currentUser.id}}">Participate</button>
+                    {{else}}
+                    <div class="main-button">
+                        <div class="scroll-to-section"><a href="/login">Login to Participate</a></div>
+                    </div>
+                    {{/if}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    {{!-- Time Remaining: --}}
+    <section class="section container-fluid coming-soon" data-section="section3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <div class="continer centerIt">
+                        <div class="mt-5">
+                            <h4 class="p-0 text-center">Time <em>Remaining:</em></h4>
+                            <div class="row justify-content-center counter">
+                                <div class="days">
+                                    <div class="value">{{time.totalDays}}</div>
+                                    <span>Days</span>
+                                </div>
+
+                                <div class="hours">
+                                    <div class="value">{{time.hours}}</div>
+                                    <span>Hours</span>
+                                </div>
+
+                                <div class="minutes">
+                                    <div class="value">{{time.minutes}}</div>
+                                    <span>Minutes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    {{!-- Discussion --}}
+    <section class="section-heading coming-soon">
+        <h2 class="mt-4">Discussion</h2>
+        {{#if loggedIn}}
+            <form class="comment-form">
+                <div>
+                    <textarea name="comment-body"style="height: 130px; width: 70%;" ></textarea>
+                </div>
+                <div>
+                    <button class="main-button" id="button-comment" type="submit">Post</button>
+                </div>
+            </form>
+        {{/if}}
+        {{> comments goal.comments}}    
+    </section>
+</section>
+
+<!-- Modal: add step -->
+<div class="modal fade text-dark" id="addCategoryModal" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <!-- Modal content-->
+        <div class="modal-content" enctype="multipart/form-data">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Create a Step</h4>
+            </div>
+            <div class="modal-body">
+                <form class="create-step-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="cat-title" placeholder="Title">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="cat-description" rows="3" placeholder="Description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="stepStartDate">Start date</label>
+                        <input class="form-control" type="date" id="stepStartDate" name="stepStartDate" />
+                    </div> 
+                    <div class="form-group">
+                        <label for="stepDueDate">Due date</label>
+                        <input class="form-control" type="date" id="stepDueDate" name="stepDueDate" />
+                    </div> 
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Create</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/javascript/comment.js"></script>
+{{!-- add js if goalowner visits goal page --}}
+{{#if postOwner}}<script src="/javascript/addcategory.js"></script>{{/if}}
+{{#if loggedIn}}
+    <script src="/javascript/participateGoal.js"></script>
+    <script src="/javascript/deleteParticipation.js"></script>
+{{/if}}
