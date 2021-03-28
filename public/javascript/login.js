@@ -51,9 +51,16 @@ async function loginFormHandler(event) {
       });
       if (response.ok) {
         document.location.replace('/profile');
-      } else {
-        alert(response.statusText);
-      }
+      } else if(response.statusText == "User already exsists!"){
+          $("#Modal-sub-text").removeAttr('hidden');
+          $("#Modal-sub-text").text("**User already exsists!**");
+        }else if(response.statusText == "That email already has an account!"){
+          $("#Modal-sub-text").removeAttr('hidden');
+          $("#Modal-sub-text").text("**That email already has an account!**");
+        }else{
+          
+          
+        }
     }
 }
 

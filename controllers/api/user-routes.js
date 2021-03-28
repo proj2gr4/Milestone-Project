@@ -61,27 +61,53 @@ async function signup(req, res) {
         fs.unlinkSync(req.file.path); // Empty temp folder
         //let filePath = req.file ? req.file.path : null
         const locationUrl = data.Location;
-        let newUser = User.create({
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password,
-            profile_img: locationUrl
+        User.findOne({
+            where:{
+                username:req.body.username,
+            }
         })
         .then(dbUserData => {
-            console.log(dbUserData);
-            req.session.save(() => {
-             req.session.user_id = dbUserData.id;
-             req.session.username = dbUserData.username;
-             req.session.loggedIn = true;
-        
-            res.json(dbUserData);
+            if(dbUserData){
+                res.statusMessage = "User already exsists!";
+                res.status(400).json({message: 'User already exsists!'});
+                return;
+            }
+            User.findOne({
+                where:{
+                    email:req.body.email,
+                }
+            })
+            .then(dbUserData => {
+                if(dbUserData){
+                    res.statusMessage = "That email already has an account!";
+                    res.status(400).json({message: 'That email already has an account!'});
+                    return;
+                }
+                let newUser = User.create({
+                    username: req.body.username,
+                    email: req.body.email,
+                    password: req.body.password,
+                    profile_img: locationUrl
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json(err)
+                })
+                .then(dbUserData => {
+                    req.session.save(() => {
+                    req.session.user_id = dbUserData.id;
+                    req.session.username = dbUserData.username;
+                    req.session.loggedIn = true;
+                
+                    res.json(dbUserData);
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json(err)
+                });
             });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err)
         });
-    
       }
     });
   }
