@@ -34,16 +34,21 @@ The application functionality:
 - Homepage
 ![Screeshot](screenshots/Homepage.png)
 - Login/Signup page
-- Contact Us Page
+![Screeshot](screenshots/Milestone2.png)
+![Screeshot](screenshots/Milestone3.png)
 - Profile Page
-- Goal Page
+![Screeshot](screenshots/Milestone6.png)
 - Dashboard
+![Screeshot](screenshots/Milestone1.png)
 - Create a goal
+![Screeshot](screenshots/Milestone4.png)
+- Goal Page
+![Screeshot](screenshots/Milestone5.png)
 ----------------------------------------------------------------
 - To make the username field in our database unique
 ![Screeshot](screenshots/image.png)
+![Screeshot](screenshots/image2.png)
 
-## For all other Screenshots please look at our Screenshots folder.
 
 ## Usage
 [Milestone Website](https://milestone-goals.herokuapp.com)
