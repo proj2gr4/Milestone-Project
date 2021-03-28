@@ -135,7 +135,7 @@ router.get('/', withAuth, (req, res) => {
                 }).then(dbMemberParticipatingData =>{
                     const membersGoal = dbMemberParticipatingData.map(data => data.get({ plain: true }));
                     profile.membersGoal = membersGoal;
-                    console.log(membersGoal);
+                    // console.log(membersGoal);
                     const completedGoal = dbCompGoalData.map(data => data.get({ plain: true }));
                     profile.completedGoal = completedGoal;
                     const categories = dbCategoriesData.map(data => data.get({ plain: true }));

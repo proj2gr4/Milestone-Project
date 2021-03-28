@@ -31,7 +31,6 @@
       </div>
     </div>
   </section>
-
 <!-- Sign upModal -->
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
@@ -42,6 +41,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Signup</h4>
+          <p class="modal-sub-title" id="Modal-sub-text" style="color: red; margin-bottom: 0px; font-weight: bold;" hidden></p>
         </div>
         <div class="modal-body">
           <div class="form-group">
@@ -66,5 +66,20 @@
     </form>
   </div>
 </div>
+<!-- error Modal -->
+        <div id="login-Error-Username-Modal" class="modal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="Modal-text" ></h5>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+        </div>
+  <!--End of error Modal-->
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/javascript/login.js"></script>

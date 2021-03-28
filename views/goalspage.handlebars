@@ -113,7 +113,7 @@
                 <div class="col-md-12 col-xs-12">
                     <div class="continer centerIt">
                         <div class="mt-5">
-                            <h4>Time <em>Remaining:</em></h4>
+                            <h4 class="p-0 text-center">Time <em>Remaining:</em></h4>
                             <div class="row justify-content-center counter">
                                 <div class="days">
                                     <div class="value">{{time.totalDays}}</div>
@@ -154,7 +154,7 @@
     </section>
 </section>
 
-<!-- Modal -->
+<!-- Modal: add step -->
 <div class="modal fade text-dark" id="addCategoryModal" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <!-- Modal content-->
@@ -180,8 +180,8 @@
                         <input class="form-control" type="date" id="stepDueDate" name="stepDueDate" />
                     </div> 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success">Create</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </form>
             </div>

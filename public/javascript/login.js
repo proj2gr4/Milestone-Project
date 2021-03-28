@@ -17,7 +17,13 @@ async function loginFormHandler(event) {
       if (response.ok) {
         document.location.replace('/profile');
       } else {
-        alert(response.statusText);
+        if(response.statusText == "No user with that username address!"){
+          $("#Modal-text").text("That Username does not exist!");
+          $("#login-Error-Username-Modal").modal();
+        }else{
+          $("#Modal-text").text("Wrong Password!");
+          $("#login-Error-Username-Modal").modal();
+        }
       }
     }
   }
@@ -45,9 +51,16 @@ async function loginFormHandler(event) {
       });
       if (response.ok) {
         document.location.replace('/profile');
-      } else {
-        alert(response.statusText);
-      }
+      } else if(response.statusText == "User already exsists!"){
+          $("#Modal-sub-text").removeAttr('hidden');
+          $("#Modal-sub-text").text("**User already exsists!**");
+        }else if(response.statusText == "That email already has an account!"){
+          $("#Modal-sub-text").removeAttr('hidden');
+          $("#Modal-sub-text").text("**That email already has an account!**");
+        }else{
+          
+          
+        }
     }
 }
 

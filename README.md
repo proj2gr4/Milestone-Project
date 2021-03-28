@@ -29,12 +29,28 @@ The application functionality:
 - Able to connect with friends, show their status, join in as a group.
 - Three categories with different goals, with different steps, and a star will be shown once the user completed a milestone.
 
+
+## Screenshots
+- Homepage
+![Screeshot](screenshots/Milestone.png)
+- Login/Signup page
+- Contact Us Page
+- Profile Page
+- Goal Page
+- Dashboard
+- Create a goal
+----------------------------------------------------------------
+- To make the username field in our database unique
+![Screeshot](screenshots/image.png)
+
+## For all other Screenshots please look at our Screenshots folder.
+
 ## Usage
 [Milestone Website](https://milestone-goals.herokuapp.com)
 
 ## Credits
 
-- Upslash photographs
+- Upslash
 - Trello
 - Creately
 - Bootstrap
