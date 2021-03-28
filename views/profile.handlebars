@@ -20,10 +20,12 @@
                     {{#if postOwner}} 
                       <div class="p-2"><a href="#editProfileModal" data-toggle="modal">Edit Profile Information</a></div>
                     {{/if}}
-                    <ul class="row justify-content-md-center">
-                      {{#each profile.completedGoal}}
-                        <h4><i class="bi bi-star-fill text-warning"></i></h4>
-                      {{/each}}
+                    <ul class="row justify-content-sm-center">
+                      <h4>
+                        {{#each profile.completedGoal}}
+                          <i class="bi bi-star-fill text-warning"></i>
+                        {{/each}}
+                      </h4>
                     </ul class="p-2">
                    <div class="p-2">Goals Achieved: {{counter profile.completedGoal}}</div>
               </div>
@@ -89,7 +91,7 @@
                           <div class="row g-0">
                             <div class="col-md-4 align-self-center">
                               {{#if member_goals.user.profile_img}}
-                                <a href="/profile/{{member_goals.user.id}}"><img src="/{{member_goals.user.profile_img}}" class="img-fluid" alt=""></a>
+                                <a href="/profile/{{member_goals.user.id}}"><img src="{{member_goals.user.profile_img}}" class="img-fluid" alt=""></a>
                               {{else}}
                                 <a href="/profile/{{member_goals.user.id}}"><img src="/images/default-img.jpg" class="img-fluid" alt=""></a>
                               {{/if}}
