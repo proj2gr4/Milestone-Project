@@ -9,6 +9,7 @@ How to install :
 - (MVC) is deployed by using node server.js
 - If choosing to use from terminal, open terminal and run 
 - make sure you have install the following npm packages:
+- "aws-sdk": "^2.874.0",
 - "bcrypt": "^5.0.1",
 - "connect-session-sequelize": "^7.1.1",
 - "dotenv": "^8.2.0",
@@ -19,7 +20,7 @@ How to install :
 - "mysql2": "^2.2.5",
 - "sequelize": "^6.5.0"
 - npm start
--
+
 # Milestone Information
 The application functionality:
 - Homepage, Dashboard, Login/Logout Navigation.
@@ -45,9 +46,9 @@ The application functionality:
 GitHub: [MILESTONE PROJECT](https://github.com/proj2gr4/Milestone-Project)
 
 ## Contributors:
-- HUI SHAN TANG : Neeko_tvxq@hotmail.com
-- TAYLOR VAN SCOY : vanscoytaylor@gmail.com
 - FAZEL RYAN CHOWDHURY : ryan7998@gmail.com
 - CURTIS SMITH : cj1988333@hotmail.com
+- HUI SHAN TANG : Neeko_tvxq@hotmail.com
+- TAYLOR VAN SCOY : vanscoytaylor@gmail.com
 
 
