@@ -1,3 +1,4 @@
+GitHub: [MILESTONE PROJECT](https://github.com/proj2gr4/Milestone-Project)
 # Milestone-Project
 Project 2 group 4 of UoT Coding BootCamp
 
@@ -31,6 +32,27 @@ The application functionality:
 - Able to connect with friends, show their status.
 - Profile page can view your own posts.
 
+## Usage
+[Milestone Website](https://milestone-goals.herokuapp.com)
+
+## Credits
+
+- Upslash
+- Trello
+- Creately
+- Bootstrap
+- Jquery
+- Youtube [Website Background](https://www.youtube.com/watch?v=TFO9hBtLVec&t=14s)
+
+## Questions
+
+GitHub: [MILESTONE PROJECT](https://github.com/proj2gr4/Milestone-Project)
+
+## Contributors:
+- FAZEL RYAN CHOWDHURY : ryan7998@gmail.com
+- CURTIS SMITH : cj1988333@hotmail.com
+- HUI SHAN TANG : Neeko_tvxq@hotmail.com
+- TAYLOR VAN SCOY : vanscoytaylor@gmail.com
 
 ## Screenshots
 - Homepage
