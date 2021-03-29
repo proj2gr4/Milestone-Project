@@ -28,4 +28,5 @@ Categories.init(
     }
 );
 
+
 module.exports = Categories;

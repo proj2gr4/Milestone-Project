@@ -1,4 +1,5 @@
 -- USER:
+
 INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("Fazle Ryan C", "ryan7998@gmail.com", "user1234", "uploads\\fazle.jpg");
 INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("test1", "test1@mail.com", "user1234", "test");
 INSERT INTO `user` (`username`,`email`,`password`,`profile_img`) VALUES ("test2", "test2@mail.com", "user1234", "uploads\\1593682294248.jpg");
