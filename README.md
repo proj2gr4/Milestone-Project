@@ -1,8 +1,12 @@
-GitHub: [MILESTONE PROJECT](https://github.com/proj2gr4/Milestone-Project)
+
+[![License: MIT License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://choosealicense.com/licenses/mit/)
 # Milestone-Project
 Project 2 group 4 of UoT Coding BootCamp
 
 The aim of this application is to motivate people to achieve their milestones. Members can create milestones that consist of multiple steps to achieve. They can post it for others to see and track progress. 
+
+## Usage
+[Milestone Website](https://milestone-goals.herokuapp.com)
 
 # Installation
 
@@ -31,9 +35,6 @@ The application functionality:
 - Update status in a goal, or cancel participation.
 - Able to connect with friends, show their status.
 - Profile page can view your own posts.
-
-## Usage
-[Milestone Website](https://milestone-goals.herokuapp.com)
 
 ## Credits
 
