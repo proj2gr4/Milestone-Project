@@ -77,4 +77,3 @@ GitHub: [MILESTONE PROJECT](https://github.com/proj2gr4/Milestone-Project)
 - To make the username field in our database unique
 ![Screeshot](screenshots/image.png)
 ![Screeshot](screenshots/image2.png)
-
