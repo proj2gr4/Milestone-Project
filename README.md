@@ -45,7 +45,9 @@ The application functionality:
 - Jquery
 - Youtube [Website Background](https://www.youtube.com/watch?v=TFO9hBtLVec&t=14s)
 
-## License**: MIT License
+## License
+
+MIT License
 
 ## Questions
 
