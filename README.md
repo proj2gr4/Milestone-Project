@@ -78,27 +78,3 @@ GitHub: [MILESTONE PROJECT](https://github.com/proj2gr4/Milestone-Project)
 ![Screeshot](screenshots/image.png)
 ![Screeshot](screenshots/image2.png)
 
-
-## Usage
-[Milestone Website](https://milestone-goals.herokuapp.com)
-
-## Credits
-
-- Upslash
-- Trello
-- Creately
-- Bootstrap
-- Jquery
-- Youtube [Website Background](https://www.youtube.com/watch?v=TFO9hBtLVec&t=14s)
-
-## Questions
-
-GitHub: [MILESTONE PROJECT](https://github.com/proj2gr4/Milestone-Project)
-
-## Contributors:
-- FAZEL RYAN CHOWDHURY : ryan7998@gmail.com
-- CURTIS SMITH : cj1988333@hotmail.com
-- HUI SHAN TANG : Neeko_tvxq@hotmail.com
-- TAYLOR VAN SCOY : vanscoytaylor@gmail.com
-
-
